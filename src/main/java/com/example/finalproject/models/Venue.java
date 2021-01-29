@@ -19,7 +19,9 @@ public class Venue {
     @Column(name = "name")
     private String name;
 
-    @OneToOne()
+    @ManyToOne
+    @JoinColumn(name = "menu_id", nullable = false)
+    @JsonIgnoreProperties({"venue"})
     private Menu menu;
 
     @JsonIgnoreProperties({"venue"})
@@ -67,5 +69,9 @@ public class Venue {
 
     public void setOrders(List<Order> orders) {
         this.orders = orders;
+    }
+
+    public boolean add(Order order) {
+        return orders.add(order);
     }
 }

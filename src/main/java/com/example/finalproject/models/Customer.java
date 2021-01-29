@@ -54,4 +54,8 @@ public class Customer {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public boolean addOrder(Order order) {
+        return orders.add(order);
+    }
 }
