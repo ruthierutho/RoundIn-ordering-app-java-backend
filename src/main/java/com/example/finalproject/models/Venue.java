@@ -28,7 +28,6 @@ public class Venue {
     @OneToMany(mappedBy ="venue", fetch = FetchType.LAZY)
     private List<Order> orders;
 
-
     public Venue(String name, Menu menu) {
         this.name = name;
         this.menu = menu;

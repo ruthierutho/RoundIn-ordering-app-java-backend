@@ -1,4 +1,7 @@
 package com.example.finalproject.repositories;
 
-public class CustomerRepository {
+import com.example.finalproject.models.Customer;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 }
