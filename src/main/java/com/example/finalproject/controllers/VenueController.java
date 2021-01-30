@@ -1,5 +1,6 @@
 package com.example.finalproject.controllers;
 
+import com.example.finalproject.models.Customer;
 import com.example.finalproject.models.Venue;
 import com.example.finalproject.repositories.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,17 +30,10 @@ public class VenueController {
     public ResponseEntity getVenues(@PathVariable Long id) {
         return new ResponseEntity<>(venueRepository.findById(id), HttpStatus.OK);
     }
-}
 
-//
-//    @GetMapping(value = "/customers/{id}")
-//    public ResponseEntity getCustomers(@PathVariable Long id) {
-//        return new ResponseEntity<>(customerRepository.findById(id), HttpStatus.OK);
-//    }
-//
-//    @PostMapping(value = "/customers")
-//    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-//        customerRepository.save(customer);
-//        return new ResponseEntity<> (customer, HttpStatus.CREATED);
-//    }
-//}
+    @PostMapping(value="/venues")
+    public ResponseEntity<Venue> createVenue(@RequestBody Venue venue){
+        venueRepository.save(venue);
+        return new ResponseEntity<>(venue, HttpStatus.CREATED);
+    }
+}
