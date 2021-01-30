@@ -1,7 +1,6 @@
 package com.example.finalproject.components;
 
-import com.apple.eawt.Application;
-import com.example.finalproject.models.Customer;
+import com.example.finalproject.models.*;
 import com.example.finalproject.repositories.CustomerRepository;
 import com.example.finalproject.repositories.OrderRepository;
 import com.example.finalproject.repositories.VenueRepository;
@@ -22,11 +21,14 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     VenueRepository venueRepository;
 
+
+
     public DataLoader(){
 
     }
 
     public void run(ApplicationArguments args){
+
         Customer ruth = new Customer("Ruth");
         customerRepository.save(ruth);
 
@@ -38,6 +40,10 @@ public class DataLoader implements ApplicationRunner {
 
         Customer mark = new Customer("Mark");
         customerRepository.save(mark);
+
+
+
+
     }
 
 

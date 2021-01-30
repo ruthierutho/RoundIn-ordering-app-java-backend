@@ -17,7 +17,7 @@ public class Drink{
     private String name;
 
     @Column(name = "price")
-    private int price;
+    private double price;
 
     @ManyToOne
     @JoinColumn(name = "menu_id", nullable = false)
@@ -29,7 +29,8 @@ public class Drink{
     @JsonIgnoreProperties({"drinks"})
     private Order order;
 
-    public Drink(String name, int price, Menu menu, Order order) {
+// TAKEN OUT CONSTRUCTOR
+    public Drink(String name, double price, Menu menu, Order order) {
         this.name = name;
         this.price = price;
         this.menu = menu;
@@ -48,11 +49,11 @@ public class Drink{
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
