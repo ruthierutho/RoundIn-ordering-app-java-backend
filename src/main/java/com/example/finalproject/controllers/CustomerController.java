@@ -28,8 +28,8 @@ public class CustomerController {
         return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
     }
 
-//    @GetMapping(value = "/customers/{id}")
-//    public ResponseEntity getCustomers(@PathVariable Long id) {
-//        return new ResponseEntity(customerRepository.findById(id), HttpStatus.OK);
-//    }
+    @GetMapping(value = "/customers/{id}")
+    public ResponseEntity getCustomers(@PathVariable Long id) {
+        return new ResponseEntity<>(customerRepository.findById(id), HttpStatus.OK);
+    }
 }
