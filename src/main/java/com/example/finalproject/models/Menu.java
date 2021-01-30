@@ -29,12 +29,12 @@ public class Menu {
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
     private List<Venue> venues;
 
-
-    public Menu(String name, List<Drink> drinks, List<Food> foods, List<Venue> venues) {
+//TAKEN OUT OF CONSTRUCTOR - List<Drink> drinks, List<Food> foods, List<Venue> venues
+    public Menu(String name) {
         this.name = name;
-        this.drinks = new ArrayList<>();
-        this.foods = new ArrayList<>();
-        this.venues = new ArrayList<>();
+        this.drinks = new ArrayList<Drink>();
+        this.foods = new ArrayList<Food>();
+        this.venues = new ArrayList<Venue>();
     }
 
     public Menu(){

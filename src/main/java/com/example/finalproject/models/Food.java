@@ -28,11 +28,12 @@ public class Food{
     @JsonIgnoreProperties({"foods"})
     private Order order;
 
-    public Food(String name, double price, Menu menu, Order order) {
+//    TAKEN OUT OF CONSTRUCTOR - Menu menu, Order order
+    public Food(String name, double price) {
         this.name = name;
         this.price = price;
-        this.menu = menu;
-        this.order = order;
+//        this.menu = menu;
+//        this.order = order;
     }
 
     public Food(){
@@ -63,19 +64,19 @@ public class Food{
         this.id = id;
     }
 
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+//    public Menu getMenu() {
+//        return menu;
+//    }
+//
+//    public void setMenu(Menu menu) {
+//        this.menu = menu;
+//    }
+//
+//    public Order getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(Order order) {
+//        this.order = order;
+//    }
 }

@@ -29,6 +29,19 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args){
 
+        Drink punkIpa = new Drink("Punk IPA", 4.49);
+        Drink tennents = new Drink ("Tennents Lager", 3.79);
+        Drink pinotGrigio = new Drink ("Pinot Grigio", 4.29);
+        Drink merlot = new Drink ("Merlot", 4.49);
+
+        Food steakPie = new Food("Steak Pie", 8.99);
+        Food fishAndChips = new Food("Fish & Chips", 7.89);
+        Food chickenCurry = new Food("Chicken Curry", 9.99);
+        Food lasagne = new Food("Lasagne", 6.99);
+
+        Menu theGrosvenor = new Menu("Food Menu");
+
+
         Customer ruth = new Customer("Ruth");
         customerRepository.save(ruth);
 
