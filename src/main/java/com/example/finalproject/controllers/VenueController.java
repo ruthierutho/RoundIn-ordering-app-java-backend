@@ -1,8 +1,6 @@
 package com.example.finalproject.controllers;
 
-import com.example.finalproject.models.Customer;
 import com.example.finalproject.models.Venue;
-import com.example.finalproject.repositories.CustomerRepository;
 import com.example.finalproject.repositories.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +18,7 @@ public class VenueController {
     @GetMapping(value= "/venues")
     public ResponseEntity<List<Venue>>getAllVenuesAndFilters(
             @RequestParam(required = false, name = "name") String name
-    ){
+    ) {
         if (name != null){
             return new ResponseEntity<>(venueRepository.findAllByName(name), HttpStatus.OK);
         }
@@ -28,19 +26,6 @@ public class VenueController {
     }
 }
 
-//
-//    @Autowired
-//    CustomerRepository customerRepository;
-//
-//    @GetMapping(value= "/customers")
-//    public ResponseEntity<List<Customer>>getAllCustomersAndFilters(
-//            @RequestParam(required = false, name = "name") String name
-//    ) {
-//        if (name != null){
-//            return new ResponseEntity<>(customerRepository.findAllByName(name), HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
-//    }
 //
 //    @GetMapping(value = "/customers/{id}")
 //    public ResponseEntity getCustomers(@PathVariable Long id) {
