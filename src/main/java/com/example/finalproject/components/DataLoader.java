@@ -21,42 +21,26 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     VenueRepository venueRepository;
 
-
-
     public DataLoader(){
 
     }
 
     public void run(ApplicationArguments args){
 
-        Drink punkIpa = new Drink("Punk IPA", 4.49);
         Drink tennents = new Drink ("Tennents Lager", 3.79);
         Drink pinotGrigio = new Drink ("Pinot Grigio", 4.29);
         Drink merlot = new Drink ("Merlot", 4.49);
         Drink guinness = new Drink("Guinness", 4.50);
-        Drink sanMiguel = new Drink("San Miguel", 4.00);
-        Drink stellaArtois = new Drink("Stella Artois", 4.00);
-        Drink strongbow = new Drink("Strongbow", 4.00);
-        Drink bulmers = new Drink("Bulmers", 4.50);
-        Drink kopparberg = new Drink("Kopparberg Mixed Fruit", 4.50);
-        Drink magners = new Drink("Magners", 4.50);
-        Drink oldMoot = new Drink ("Old Moot", 4.50);
 
         Food steakPie = new Food("Steak Pie", 8.99);
         Food fishAndChips = new Food("Fish & Chips", 7.89);
-        Food chickenCurry = new Food("Chicken Curry", 9.99);
-        Food lasagne = new Food("Lasagne", 6.99);
-        Food chickenSupreme = new Food("Chicken Supreme", 8.99);
-        Food scampi = new Food("Scampi", 8.99);
         Food burger = new Food("Burger", 8.99);
-        Food chickenBurger = new Food("Chicken Burger", 8.99);
-        Food chips = new Food("Chips", 3.50);
+        Food lasagne = new Food("Lasagne", 6.99);
 
         Menu grosvenorMenu = new Menu("The Grosvenor - Food and Drink Menu");
         Menu kiltedPigMenu = new Menu("The Kilted Pig - Food and Drink Menu");
         Menu athleticArmsMenu = new Menu("The Athletic Arms - Food and Drink Menu");
         Menu macNastysMenu = new Menu("MacNastys - Food and Drink Menu");
-
 
         Customer ruth = new Customer("Ruth");
         customerRepository.save(ruth);
@@ -122,22 +106,22 @@ public class DataLoader implements ApplicationRunner {
 
 
         order1.addDrink(pinotGrigio);
-        order1.addDrink(bulmers);
-        order1.addFood(chickenSupreme);
+        order1.addDrink(merlot);
+        order1.addFood(fishAndChips);
         order1.addFood(burger);
         orderRepository.save(order1);
 
         order2.addDrink(guinness);
         order2.addDrink(merlot);
-        order2.addFood(chickenCurry);
+        order2.addFood(burger);
         order2.addFood(fishAndChips);
         orderRepository.save(order2);
 
-        order3.addDrink(punkIpa);
-        order3.addDrink(punkIpa);
+        order3.addDrink(tennents);
+        order3.addDrink(tennents);
         order3.addDrink(pinotGrigio);
-        order3.addDrink(oldMoot);
-        order3.addFood(chips);
+        order3.addDrink(merlot);
+        order3.addFood(burger);
         orderRepository.save(order3);
 
         order4.addDrink(tennents);
@@ -145,6 +129,46 @@ public class DataLoader implements ApplicationRunner {
         order4.addFood(steakPie);
         order4.addFood(lasagne);
         orderRepository.save(order4);
+
+        grosvenorMenu.addDrink(tennents);
+        grosvenorMenu.addDrink(pinotGrigio);
+        grosvenorMenu.addDrink(merlot);
+        grosvenorMenu.addDrink(guinness);
+        grosvenorMenu.addFood(steakPie);
+        grosvenorMenu.addFood(fishAndChips);
+        grosvenorMenu.addFood(burger);
+        grosvenorMenu.addFood(lasagne);
+        grosvenorMenu.addVenue(venue1);
+
+        kiltedPigMenu.addDrink(tennents);
+        kiltedPigMenu.addDrink(pinotGrigio);
+        kiltedPigMenu.addDrink(merlot);
+        kiltedPigMenu.addDrink(guinness);
+        kiltedPigMenu.addFood(steakPie);
+        kiltedPigMenu.addFood(fishAndChips);
+        kiltedPigMenu.addFood(burger);
+        kiltedPigMenu.addFood(lasagne);
+        kiltedPigMenu.addVenue(venue2);
+
+        athleticArmsMenu.addDrink(tennents);
+        athleticArmsMenu.addDrink(pinotGrigio);
+        athleticArmsMenu.addDrink(merlot);
+        athleticArmsMenu.addDrink(guinness);
+        athleticArmsMenu.addFood(steakPie);
+        athleticArmsMenu.addFood(fishAndChips);
+        athleticArmsMenu.addFood(burger);
+        athleticArmsMenu.addFood(lasagne);
+        athleticArmsMenu.addVenue(venue3);
+
+        macNastysMenu.addDrink(tennents);
+        macNastysMenu.addDrink(pinotGrigio);
+        macNastysMenu.addDrink(merlot);
+        macNastysMenu.addDrink(guinness);
+        macNastysMenu.addFood(steakPie);
+        macNastysMenu.addFood(fishAndChips);
+        macNastysMenu.addFood(burger);
+        macNastysMenu.addFood(lasagne);
+        macNastysMenu.addVenue(venue4);
     }
 }
 
@@ -275,3 +299,19 @@ public class DataLoader implements ApplicationRunner {
 //
 //        Order order25 = new Order("Thursday Feb 4th", emily, venue1);
 //        orderRepository.save(order25);
+
+
+//    Drink bulmers = new Drink("Bulmers", 4.50);
+//    Drink oldMoot = new Drink ("Old Moot", 4.50);
+//    Drink punkIpa = new Drink("Punk IPA", 4.49);
+//    Drink sanMiguel = new Drink("San Miguel", 4.00);
+//    Drink stellaArtois = new Drink("Stella Artois", 4.00);
+//    Drink strongbow = new Drink("Strongbow", 4.00);
+//    Drink kopparberg = new Drink("Kopparberg Mixed Fruit", 4.50);
+//    Drink magners = new Drink("Magners", 4.50);
+//
+//    Food scampi = new Food("Scampi", 8.99);
+//    Food chickenBurger = new Food("Chicken Burger", 8.99);
+//    Food chickenCurry = new Food("Chicken Curry", 9.99);
+//    Food chickenSupreme = new Food("Chicken Supreme", 8.99);
+//    Food chips = new Food("Chips", 3.50);
