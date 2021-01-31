@@ -208,12 +208,24 @@ public class DataLoader implements ApplicationRunner {
         orderRepository.save(order18);
 
         Order order19 = new Order("Thursday Feb 4th", max, venue4);
+        orderRepository.save(order19);
+
+        Order order20 = new Order("Thursday Feb 4th", ian, venue5);
+        orderRepository.save(order20);
+
+        Order order21 = new Order("Thursday Feb 4th", mateusz, venue1);
+        orderRepository.save(order21);
+
+        Order order22 = new Order("Thursday Feb 4th", rob, venue2);
+        orderRepository.save(order22);
+
+        Order order23 = new Order("Thursday Feb 4th", marc, venue3);
+        orderRepository.save(order23);
+
+        Order order24 = new Order("Thursday Feb 4th", kenny, venue4);
+        orderRepository.save(order24);
+
+        Order order25 = new Order("Thursday Feb 4th", emily, venue5);
+        orderRepository.save(order25);
     }
 }
-
-                "Ian"
-                "Mateusz"
-                "Rob";
-                "Marc"
-                "Kenny"
-                "Emily"
