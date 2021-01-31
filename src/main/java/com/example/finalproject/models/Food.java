@@ -22,17 +22,17 @@ public class Food{
 
     @ManyToMany
     @JoinTable(
-            name = "menu_drinks",
+            name = "menu_foods",
             joinColumns = {
                     @JoinColumn (
-                            name = "drink_id",
+                            name = "food_id",
                             nullable = false,
                             updatable = false
                     )
             },
             inverseJoinColumns = {
                     @JoinColumn (
-                            name = "food_id",
+                            name = "menu_id",
                             nullable = false,
                             updatable = false
                     )
@@ -42,10 +42,10 @@ public class Food{
 
     @ManyToMany
     @JoinTable(
-            name = "order_drinks",
+            name = "order_foods",
             joinColumns = {
                     @JoinColumn (
-                            name = "drink_id",
+                            name = "food_id",
                             nullable = false,
                             updatable = false
                     )

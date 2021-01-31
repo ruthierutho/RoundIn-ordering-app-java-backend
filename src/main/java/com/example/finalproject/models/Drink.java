@@ -31,7 +31,7 @@ public class Drink{
             },
             inverseJoinColumns = {
                     @JoinColumn (
-                            name = "food_id",
+                            name = "menu_id",
                             nullable = false,
                             updatable = false
                     )

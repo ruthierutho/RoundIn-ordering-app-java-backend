@@ -1,9 +1,7 @@
 package com.example.finalproject.components;
 
 import com.example.finalproject.models.*;
-import com.example.finalproject.repositories.CustomerRepository;
-import com.example.finalproject.repositories.OrderRepository;
-import com.example.finalproject.repositories.VenueRepository;
+import com.example.finalproject.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -23,14 +21,25 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     VenueRepository venueRepository;
 
+    @Autowired
+    DrinkRepository drinkRepository;
+
+    @Autowired
+    FoodRepository foodRepository;
+
+    @Autowired
+    MenuRepository menuRepository;
+
     ArrayList<Drink> drinksArray;
 
     ArrayList<Food> foodsArray;
 
-
+    ArrayList<Menu> menusArray;
 
     public DataLoader(){
-
+        this.drinksArray = new ArrayList<>();
+        this.foodsArray = new ArrayList<>();
+        this.menusArray = new ArrayList<>();
     }
 
     public void run(ApplicationArguments args){
@@ -61,6 +70,9 @@ public class DataLoader implements ApplicationRunner {
         drinksArray.add(magners);
         drinksArray.add(oldMoot);
 
+        for (Drink drink: drinksArray) {
+            drinkRepository.save(drink);
+        }
 
         Food steakPie = new Food("Steak Pie", 8.99);
         Food fishAndChips = new Food("Fish & Chips", 7.89);
@@ -79,14 +91,35 @@ public class DataLoader implements ApplicationRunner {
         foodsArray.add(burger);
         foodsArray.add(chickenBurger);
 
+        for (Food food: foodsArray) {
+            foodRepository.save(food);
+        }
 
-        Menu theGrosvenorDrink = new Menu("The Grosvenor - Menu");
-        Menu theKiltedPigDrink = new Menu("The Kilted Pig - Menu");
-        Menu theAthleticArmsFood = new Menu("The Athletic Arms - Menu");
-        Menu macNastysDrink = new Menu("MacNastys - Menu");
-        Menu no10Food = new Menu("No.10 - Menu");
+        Menu theGrosvenorMenu = new Menu("The Grosvenor - Menu");
+        Menu theKiltedPigMenu = new Menu("The Kilted Pig - Menu");
+        Menu theAthleticArmsMenu = new Menu("The Athletic Arms - Menu");
+        Menu macNastysMenu = new Menu("MacNastys - Menu");
+        Menu no10Menu = new Menu("No.10 - Menu");
 
+        menusArray.add(theGrosvenorMenu);
+        menusArray.add(theKiltedPigMenu);
+        menusArray.add(theAthleticArmsMenu);
+        menusArray.add(macNastysMenu);
+        menusArray.add(no10Menu);
 
+        for (Menu menu: menusArray) {
+            menuRepository.save(menu);
+        }
+
+        for (Menu menu: menusArray) {
+            for (Food food: foodsArray) {
+                menu.addFood(food);
+            }
+            for (Drink drink: drinksArray) {
+                menu.addDrink(drink);
+            }
+            menuRepository.save(menu);
+        }
 
         Customer ruth = new Customer("Ruth");
         customerRepository.save(ruth);
@@ -163,19 +196,19 @@ public class DataLoader implements ApplicationRunner {
         Customer emily = new Customer("Emily");
         customerRepository.save(emily);
 
-        Venue venue1 = new Venue("The Grosvenor", theGrosvenorDrink);
+        Venue venue1 = new Venue("The Grosvenor", theGrosvenorMenu);
         venueRepository.save(venue1);
 
-        Venue venue2 = new Venue("The Kilted Pig", theKiltedPigDrink);
+        Venue venue2 = new Venue("The Kilted Pig", theKiltedPigMenu);
         venueRepository.save(venue2);
 
-        Venue venue3 = new Venue("The Athletic Arms", theAthleticArmsFood);
+        Venue venue3 = new Venue("The Athletic Arms", theAthleticArmsMenu);
         venueRepository.save(venue3);
 
-        Venue venue4 = new Venue("MacNastys", macNastysDrink);
+        Venue venue4 = new Venue("MacNastys", macNastysMenu);
         venueRepository.save(venue4);
 
-        Venue venue5 = new Venue("No.10", no10Food);
+        Venue venue5 = new Venue("No.10", no10Menu);
         venueRepository.save(venue5);
     }
 }

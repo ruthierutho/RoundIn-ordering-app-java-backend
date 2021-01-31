@@ -19,7 +19,7 @@ public class Venue {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "menu_id", nullable = false)
     @JsonIgnoreProperties({"venue"})
     private Menu menu;
