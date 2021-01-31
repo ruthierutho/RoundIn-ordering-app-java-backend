@@ -52,16 +52,11 @@ public class DataLoader implements ApplicationRunner {
         Food chickenBurger = new Food("Chicken Burger", 8.99);
         Food chips = new Food("Chips", 3.50);
 
-        Menu theGrosvenorFood = new Menu("The Grosvenor - Food Menu");
-        Menu theGrosvenorDrink = new Menu("The Grosvenor - Drink Menu");
-        Menu theKiltedPigDrink = new Menu("The Kilted Pig - Drink Menu");
-        Menu theKiltedPigFood = new Menu("The Kilted Pig - Food Menu");
-        Menu theAthleticArmsDrink = new Menu("The Athletic Arms - Drinks Menu");
-        Menu theAthleticArmsFood = new Menu("The Athletic Arms - Food Menu");
-        Menu macNastysDrink = new Menu("MacNastys - Drinks Menu");
-        Menu macNastysFood = new Menu("MacNastys - Food Menu");
-        Menu no10Food = new Menu("No.10 - Food Menu");
-        Menu no10Drink = new Menu("No.10 - Drinks Menu");
+        Menu grosvenorMenu = new Menu("The Grosvenor - Food and Drink Menu");
+        Menu kiltedPigMenu = new Menu("The Kilted Pig - Food and Drink Menu");
+        Menu athleticArmsMenu = new Menu("The Athletic Arms - Food and Drink Menu");
+        Menu macNastysMenu = new Menu("MacNastys - Food and Drink Menu");
+
 
         Customer ruth = new Customer("Ruth");
         customerRepository.save(ruth);
@@ -75,16 +70,16 @@ public class DataLoader implements ApplicationRunner {
         Customer mark = new Customer("Mark");
         customerRepository.save(mark);
 
-        Venue venue1 = new Venue("The Grosvenor", theGrosvenorDrink);
+        Venue venue1 = new Venue("The Grosvenor", grosvenorMenu);
         venueRepository.save(venue1);
 
-        Venue venue2 = new Venue("The Kilted Pig", theKiltedPigDrink);
+        Venue venue2 = new Venue("The Kilted Pig", kiltedPigMenu);
         venueRepository.save(venue2);
 
-        Venue venue3 = new Venue("The Athletic Arms", theAthleticArmsFood);
+        Venue venue3 = new Venue("The Athletic Arms", athleticArmsMenu);
         venueRepository.save(venue3);
 
-        Venue venue4 = new Venue("MacNastys", macNastysDrink);
+        Venue venue4 = new Venue("MacNastys", macNastysMenu);
         venueRepository.save(venue4);
 
         Order order1 = new Order("Thursday Feb 4th", ruth, venue1);
