@@ -33,6 +33,12 @@ public class DataLoader implements ApplicationRunner {
         Drink tennents = new Drink ("Tennents Lager", 3.79);
         Drink pinotGrigio = new Drink ("Pinot Grigio", 4.29);
         Drink merlot = new Drink ("Merlot", 4.49);
+        Drink guinness = new Drink("Guinness", 4.50);
+        Drink sanMiguel = new Drink("San Miguel", 4.00);
+        Drink stellaArtois = new Drink("Stella Artois", 4.00);
+        Drink strongbow = new Drink("Strongbow", 4.00);
+        Drink bulmers = new Drink("Bulmers", 4.50);
+        Drink kopparberg = new Drink("Kopparberg Mixed Fruit", 4.50);
 
         Food steakPie = new Food("Steak Pie", 8.99);
         Food fishAndChips = new Food("Fish & Chips", 7.89);
@@ -55,11 +61,5 @@ public class DataLoader implements ApplicationRunner {
         Customer mark = new Customer("Mark");
         customerRepository.save(mark);
 
-
-
-
     }
-
-
-
 }
