@@ -80,12 +80,12 @@ public class Order {
         this.customer = customer;
     }
 
-    public boolean addFood(Food food) {
-        return foods.add(food);
+    public void addFood(Food food) {
+        this.foods.add(food);
     }
 
-    public boolean addDrink(Drink drink) {
-        return drinks.add(drink);
+    public void addDrink(Drink drink) {
+        this.drinks.add(drink);
     }
 
 }
