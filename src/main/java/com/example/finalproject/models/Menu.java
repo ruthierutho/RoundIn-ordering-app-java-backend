@@ -17,19 +17,50 @@ public class Menu {
     @Column(name = "name")
     private String name;
 
-    @JsonIgnoreProperties({"menu"})
-    @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
+    @ManyToMany
+    @JoinTable(
+            name = "menu_drinks",
+            joinColumns = {
+                    @JoinColumn (
+                        name = "menu_id",
+                        nullable = false,
+                        updatable = false
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn (
+                        name = "drink_id",
+                        nullable = false,
+                        updatable = false
+                    )
+            }
+    )
     private List<Drink> drinks;
 
-    @JsonIgnoreProperties({"menu"})
-    @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
+    @ManyToMany
+    @JoinTable(
+            name = "menu_foods",
+            joinColumns = {
+                    @JoinColumn (
+                            name = "menu_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn (
+                            name = "food_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            }
+    )
     private List<Food> foods;
 
     @JsonIgnoreProperties({"menu"})
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
     private List<Venue> venues;
 
-//TAKEN OUT OF CONSTRUCTOR - List<Drink> drinks, List<Food> foods, List<Venue> venues
     public Menu(String name) {
         this.name = name;
         this.drinks = new ArrayList<Drink>();

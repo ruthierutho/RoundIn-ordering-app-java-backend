@@ -1,9 +1,9 @@
 package com.example.finalproject.models;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "drinks")
@@ -19,22 +19,51 @@ public class Drink{
     @Column(name = "price")
     private double price;
 
-    @ManyToOne
-    @JoinColumn(name = "menu_id", nullable = false)
-    @JsonIgnoreProperties({"drinks"})
-    private Menu menu;
+    @ManyToMany
+    @JoinTable(
+            name = "menu_drinks",
+            joinColumns = {
+                    @JoinColumn (
+                            name = "drink_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn (
+                            name = "food_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            }
+    )
+    private List<Menu> menu;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
-    @JsonIgnoreProperties({"drinks"})
-    private Order order;
+    @ManyToMany
+    @JoinTable(
+            name = "order_drinks",
+            joinColumns = {
+                    @JoinColumn (
+                            name = "drink_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn (
+                            name = "order_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            }
+    )
+    private List<Order> order;
 
-// TAKEN OUT CONSTRUCTOR -  Menu menu, Order order
     public Drink(String name, double price) {
         this.name = name;
         this.price = price;
-//        this.menu = menu;
-//        this.order = order;
+        this.menu = new ArrayList<Menu>();
+        this.order = new ArrayList<Order>();
     }
 
     public Drink(){
@@ -65,19 +94,27 @@ public class Drink{
         this.id = id;
     }
 
-//    public Menu getMenu() {
-//        return menu;
-//    }
-//
-//    public void setMenu(Menu menu) {
-//        this.menu = menu;
-//    }
-//
-//    public Order getOrder() {
-//        return order;
-//    }
-//
-//    public void setOrder(Order order) {
-//        this.order = order;
-//    }
+    public boolean addMenu(Menu menu) {
+        return this.menu.add(menu);
+    }
+
+    public boolean addOrder(Order order) {
+        return this.order.add(order);
+    }
+
+    public List<Menu> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(List<Menu> menu) {
+        this.menu = menu;
+    }
+
+    public List<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(List<Order> order) {
+        this.order = order;
+    }
 }

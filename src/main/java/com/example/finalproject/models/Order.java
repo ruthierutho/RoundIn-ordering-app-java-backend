@@ -1,6 +1,5 @@
 package com.example.finalproject.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -20,12 +19,44 @@ public class Order {
     @JsonIgnoreProperties({"order"})
     private Venue venue;
 
-    @JsonIgnoreProperties({"order"})
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    @ManyToMany
+    @JoinTable(
+            name = "order_foods",
+            joinColumns = {
+                    @JoinColumn (
+                            name = "order_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn (
+                            name = "food_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            }
+    )
     private List<Food> foods;
 
-    @JsonIgnoreProperties({"order"})
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    @ManyToMany
+    @JoinTable(
+            name = "order_drinks",
+            joinColumns = {
+                    @JoinColumn (
+                            name = "order_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn (
+                            name = "drink_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            }
+    )
     private List<Drink> drinks;
 
     @Column(name = "date")
@@ -36,7 +67,7 @@ public class Order {
     @JsonIgnoreProperties({"order"})
     Customer customer;
 
-    public Order(List<Food> foods, List<Drink> drinks, String date, Customer customer, Venue venue) {
+    public Order(String date, Customer customer, Venue venue) {
         this.drinks = new ArrayList<>();
         this.foods = new ArrayList<>();
         this.date = date;

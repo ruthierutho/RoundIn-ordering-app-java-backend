@@ -9,6 +9,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -21,6 +23,10 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     VenueRepository venueRepository;
 
+    ArrayList<Drink> drinksArray;
+
+    ArrayList<Food> foodsArray;
+
 
 
     public DataLoader(){
@@ -28,6 +34,7 @@ public class DataLoader implements ApplicationRunner {
     }
 
     public void run(ApplicationArguments args){
+
 
         Drink punkIpa = new Drink("Punk IPA", 4.49);
         Drink tennents = new Drink ("Tennents Lager", 3.79);
@@ -41,6 +48,19 @@ public class DataLoader implements ApplicationRunner {
         Drink kopparberg = new Drink("Kopparberg Mixed Fruit", 4.50);
         Drink magners = new Drink("Magners", 4.50);
         Drink oldMoot = new Drink ("Old Moot", 4.50);
+        drinksArray.add(punkIpa);
+        drinksArray.add(tennents);
+        drinksArray.add(pinotGrigio);
+        drinksArray.add(merlot);
+        drinksArray.add(guinness);
+        drinksArray.add(sanMiguel);
+        drinksArray.add(stellaArtois);
+        drinksArray.add(strongbow);
+        drinksArray.add(bulmers);
+        drinksArray.add(kopparberg);
+        drinksArray.add(magners);
+        drinksArray.add(oldMoot);
+
 
         Food steakPie = new Food("Steak Pie", 8.99);
         Food fishAndChips = new Food("Fish & Chips", 7.89);
@@ -50,17 +70,22 @@ public class DataLoader implements ApplicationRunner {
         Food scampi = new Food("Scampi", 8.99);
         Food burger = new Food("Burger", 8.99);
         Food chickenBurger = new Food("Chicken Burger", 8.99);
+        foodsArray.add(steakPie);
+        foodsArray.add(fishAndChips);
+        foodsArray.add(chickenCurry);
+        foodsArray.add(lasagne);
+        foodsArray.add(chickenSupreme);
+        foodsArray.add(scampi);
+        foodsArray.add(burger);
+        foodsArray.add(chickenBurger);
 
-        Menu theGrosvenorFood = new Menu("The Grosvenor - Food Menu");
-        Menu theGrosvenorDrink = new Menu("The Grosvenor - Drink Menu");
-        Menu theKiltedPigDrink = new Menu("The Kilted Pig - Drink Menu");
-        Menu theKiltedPigFood = new Menu("The Kilted Pig - Food Menu");
-        Menu theAthleticArmsDrink = new Menu("The Athletic Arms - Drinks Menu");
-        Menu theAthleticArmsFood = new Menu("The Athletic Arms - Food Menu");
-        Menu macNastysDrink = new Menu("MacNastys - Drinks Menu");
-        Menu macNastysFood = new Menu("MacNastys - Food Menu");
-        Menu no10Food = new Menu("No.10 - Food Menu");
-        Menu no10Drink = new Menu("No.10 - Drinks Menu");
+
+        Menu theGrosvenorDrink = new Menu("The Grosvenor - Menu");
+        Menu theKiltedPigDrink = new Menu("The Kilted Pig - Menu");
+        Menu theAthleticArmsFood = new Menu("The Athletic Arms - Menu");
+        Menu macNastysDrink = new Menu("MacNastys - Menu");
+        Menu no10Food = new Menu("No.10 - Menu");
+
 
 
         Customer ruth = new Customer("Ruth");
