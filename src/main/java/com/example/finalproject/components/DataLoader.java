@@ -91,7 +91,20 @@ public class DataLoader implements ApplicationRunner {
         Customer ally = new Customer("Ally");
         customerRepository.save(ally);
 
+        Customer stuart = new Customer("Stuart");
+        customerRepository.save(stuart);
 
+        Customer michael = new Customer("Michael");
+        customerRepository.save(michael);
+
+        Customer andy = new Customer("Andy");
+        customerRepository.save(andy);
+
+        Customer ruthI = new Customer("Ruth I");
+        customerRepository.save(ruthI);
+
+        Customer emma = new Customer("Emma");
+        customerRepository.save(emma);
 
     }
 }
