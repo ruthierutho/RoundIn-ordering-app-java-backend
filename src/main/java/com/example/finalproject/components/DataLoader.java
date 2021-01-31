@@ -210,5 +210,13 @@ public class DataLoader implements ApplicationRunner {
 
         Venue venue5 = new Venue("No.10", no10Menu);
         venueRepository.save(venue5);
+
+        Order order1 = new Order("01-02-2021 09:15",emily, venue1);
+        orderRepository.save(order1);
+        order1.addDrink(guinness);
+        order1.addDrink(guinness);
+        order1.addFood(scampi);
+        order1.addFood(steakPie);
+        orderRepository.save(order1);
     }
 }
