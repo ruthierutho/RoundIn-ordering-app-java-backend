@@ -51,9 +51,12 @@ public class DataLoader implements ApplicationRunner {
         Food burger = new Food("Burger", 8.99);
         Food chickenBurger = new Food("Chicken Burger", 8.99);
 
-        Menu theGrosvenor = new Menu("The Grosvenor - Food Menu");
-        Menu theKiltedPig = new Menu("The Kilted Pig - Cocktail Menu");
-        Menu theAthleticArms = new Menu("The Athletic Arms - Drinks Menu");
+        Menu theGrosvenorFood = new Menu("The Grosvenor - Food Menu");
+        Menu theGrosvenorDrink = new Menu("The Grosvenor - Drink Menu");
+        Menu theKiltedPigDrink = new Menu("The Kilted Pig - Drink Menu");
+        Menu theKiltedPigFood = new Menu("The Kilted Pig - Food Menu");
+        Menu theAthleticArmsDrink = new Menu("The Athletic Arms - Drinks Menu");
+        Menu theAthleticArmsFood = new Menu("The Athletic Arms - Food Menu");
 
         Customer ruth = new Customer("Ruth");
         customerRepository.save(ruth);
