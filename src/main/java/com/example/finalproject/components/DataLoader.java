@@ -57,6 +57,11 @@ public class DataLoader implements ApplicationRunner {
         Menu theKiltedPigFood = new Menu("The Kilted Pig - Food Menu");
         Menu theAthleticArmsDrink = new Menu("The Athletic Arms - Drinks Menu");
         Menu theAthleticArmsFood = new Menu("The Athletic Arms - Food Menu");
+        Menu macNastysDrink = new Menu("MacNastys - Drinks Menu");
+        Menu macNastysFood = new Menu("MacNastys - Food Menu");
+        Menu no10Food = new Menu("No.10 - Food Menu");
+        Menu no10Drink = new Menu("No.10 - Drinks Menu");
+
 
         Customer ruth = new Customer("Ruth");
         customerRepository.save(ruth);
@@ -132,5 +137,20 @@ public class DataLoader implements ApplicationRunner {
 
         Customer emily = new Customer("Emily");
         customerRepository.save(emily);
+
+        Venue venue1 = new Venue("The Grosvenor", theGrosvenorDrink);
+        venueRepository.save(venue1);
+
+        Venue venue2 = new Venue("The Kilted Pig", theKiltedPigDrink);
+        venueRepository.save(venue2);
+
+        Venue venue3 = new Venue("The Athletic Arms", theAthleticArmsFood);
+        venueRepository.save(venue3);
+
+        Venue venue4 = new Venue("MacNastys", macNastysDrink);
+        venueRepository.save(venue4);
+
+        Venue venue5 = new Venue("No.10", no10Food);
+        venueRepository.save(venue5);
     }
 }
