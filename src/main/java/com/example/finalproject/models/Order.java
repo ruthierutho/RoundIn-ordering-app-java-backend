@@ -36,12 +36,13 @@ public class Order {
     @JsonIgnoreProperties({"order"})
     Customer customer;
 
-    public Order(List<Food> foods, List<Drink> drinks, String date, Customer customer, Venue venue) {
-        this.drinks = new ArrayList<>();
-        this.foods = new ArrayList<>();
+//    REMOVED FROM CONSTRUCTOR - List<Food> foods, List<Drink> drinks,
+    public Order(String date, Customer customer, Venue venue) {
         this.date = date;
         this.customer = customer;
         this.venue = venue;
+        this.drinks = new ArrayList<>();
+        this.foods = new ArrayList<>();
     }
 
     public Order(){
