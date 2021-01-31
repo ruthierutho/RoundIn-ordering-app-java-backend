@@ -62,7 +62,6 @@ public class DataLoader implements ApplicationRunner {
         Menu no10Food = new Menu("No.10 - Food Menu");
         Menu no10Drink = new Menu("No.10 - Drinks Menu");
 
-
         Customer ruth = new Customer("Ruth");
         customerRepository.save(ruth);
 
@@ -75,68 +74,69 @@ public class DataLoader implements ApplicationRunner {
         Customer mark = new Customer("Mark");
         customerRepository.save(mark);
 
-        Customer john = new Customer("John");
-        customerRepository.save(john);
 
-        Customer roosa = new Customer("Roosa");
-        customerRepository.save(roosa);
-
-        Customer juan = new Customer("Juan");
-        customerRepository.save(juan);
-
-        Customer colin = new Customer("Colin");
-        customerRepository.save(colin);
-
-        Customer hannah = new Customer("Hannah");
-        customerRepository.save(hannah);
-
-        Customer zsolt = new Customer("Zsolt");
-        customerRepository.save(zsolt);
-
-        Customer ally = new Customer("Ally");
-        customerRepository.save(ally);
-
-        Customer stuart = new Customer("Stuart");
-        customerRepository.save(stuart);
-
-        Customer michael = new Customer("Michael");
-        customerRepository.save(michael);
-
-        Customer andy = new Customer("Andy");
-        customerRepository.save(andy);
-
-        Customer ruthI = new Customer("Ruth I");
-        customerRepository.save(ruthI);
-
-        Customer emma = new Customer("Emma");
-        customerRepository.save(emma);
-
-        Customer katie = new Customer("Katie");
-        customerRepository.save(katie);
-
-        Customer gavin = new Customer("Gavin");
-        customerRepository.save(gavin);
-
-        Customer max = new Customer("Max");
-        customerRepository.save(max);
-
-        Customer ian = new Customer("Ian");
-        customerRepository.save(ian);
-
-        Customer mateusz = new Customer("Mateusz");
-        customerRepository.save(mateusz);
-
-        Customer rob = new Customer("Rob");
-        customerRepository.save(rob);
-
-        Customer marc = new Customer("Marc");
-        customerRepository.save(marc);
-
-        Customer kenny = new Customer("Kenny");
-        customerRepository.save(kenny);
-
-        Customer emily = new Customer("Emily");
-        customerRepository.save(emily);
+//        Customer john = new Customer("John");
+//        customerRepository.save(john);
+//
+//        Customer roosa = new Customer("Roosa");
+//        customerRepository.save(roosa);
+//
+//        Customer juan = new Customer("Juan");
+//        customerRepository.save(juan);
+//
+//        Customer colin = new Customer("Colin");
+//        customerRepository.save(colin);
+//
+//        Customer hannah = new Customer("Hannah");
+//        customerRepository.save(hannah);
+//
+//        Customer zsolt = new Customer("Zsolt");
+//        customerRepository.save(zsolt);
+//
+//        Customer ally = new Customer("Ally");
+//        customerRepository.save(ally);
+//
+//        Customer stuart = new Customer("Stuart");
+//        customerRepository.save(stuart);
+//
+//        Customer michael = new Customer("Michael");
+//        customerRepository.save(michael);
+//
+//        Customer andy = new Customer("Andy");
+//        customerRepository.save(andy);
+//
+//        Customer ruthI = new Customer("Ruth I");
+//        customerRepository.save(ruthI);
+//
+//        Customer emma = new Customer("Emma");
+//        customerRepository.save(emma);
+//
+//        Customer katie = new Customer("Katie");
+//        customerRepository.save(katie);
+//
+//        Customer gavin = new Customer("Gavin");
+//        customerRepository.save(gavin);
+//
+//        Customer max = new Customer("Max");
+//        customerRepository.save(max);
+//
+//        Customer ian = new Customer("Ian");
+//        customerRepository.save(ian);
+//
+//        Customer mateusz = new Customer("Mateusz");
+//        customerRepository.save(mateusz);
+//
+//        Customer rob = new Customer("Rob");
+//        customerRepository.save(rob);
+//
+//        Customer marc = new Customer("Marc");
+//        customerRepository.save(marc);
+//
+//        Customer kenny = new Customer("Kenny");
+//        customerRepository.save(kenny);
+//
+//        Customer emily = new Customer("Emily");
+//        customerRepository.save(emily);
 
         Venue venue1 = new Venue("The Grosvenor", theGrosvenorDrink);
         venueRepository.save(venue1);
@@ -165,67 +165,115 @@ public class DataLoader implements ApplicationRunner {
         Order order4 = new Order("Thursday Feb 4th", mark, venue4);
         orderRepository.save(order4);
 
-        Order order5 = new Order("Thursday Feb 4th", john, venue5);
-        orderRepository.save(order5);
+//        Order order5 = new Order("Thursday Feb 4th", john, venue5);
+//        orderRepository.save(order5);
+//
+//        Order order6 = new Order("Thursday Feb 4th", roosa, venue1);
+//        orderRepository.save(order6);
+//
+//        Order order7 = new Order("Thursday Feb 4th", juan, venue2);
+//        orderRepository.save(order7);
+//
+//        Order order8 = new Order("Thursday Feb 4th", colin, venue3);
+//        orderRepository.save(order8);
+//
+//        Order order9 = new Order("Thursday Feb 4th", hannah, venue4);
+//        orderRepository.save(order9);
+//
+//        Order order10 = new Order("Thursday Feb 4th", zsolt, venue5);
+//        orderRepository.save(order10);
+//
+//        Order order11 = new Order("Thursday Feb 4th", ally, venue1);
+//        orderRepository.save(order11);
+//
+//        Order order12 = new Order("Thursday Feb 4th", stuart, venue2);
+//        orderRepository.save(order12);
+//
+//        Order order13 = new Order("Thursday Feb 4th", michael, venue3);
+//        orderRepository.save(order13);
+//
+//        Order order14 = new Order("Thursday Feb 4th", andy, venue4);
+//        orderRepository.save(order14);
+//
+//        Order order15 = new Order("Thursday Feb 4th", ruthI, venue5);
+//        orderRepository.save(order15);
+//
+//        Order order16 = new Order("Thursday Feb 4th", emma, venue1);
+//        orderRepository.save(order16);
+//
+//        Order order17 = new Order("Thursday Feb 4th", katie, venue2);
+//        orderRepository.save(order17);
+//
+//        Order order18 = new Order("Thursday Feb 4th", gavin, venue3);
+//        orderRepository.save(order18);
+//
+//        Order order19 = new Order("Thursday Feb 4th", max, venue4);
+//        orderRepository.save(order19);
+//
+//        Order order20 = new Order("Thursday Feb 4th", ian, venue5);
+//        orderRepository.save(order20);
+//
+//        Order order21 = new Order("Thursday Feb 4th", mateusz, venue1);
+//        orderRepository.save(order21);
+//
+//        Order order22 = new Order("Thursday Feb 4th", rob, venue2);
+//        orderRepository.save(order22);
+//
+//        Order order23 = new Order("Thursday Feb 4th", marc, venue3);
+//        orderRepository.save(order23);
+//
+//        Order order24 = new Order("Thursday Feb 4th", kenny, venue4);
+//        orderRepository.save(order24);
+//
+//        Order order25 = new Order("Thursday Feb 4th", emily, venue5);
+//        orderRepository.save(order25);
 
-        Order order6 = new Order("Thursday Feb 4th", roosa, venue1);
-        orderRepository.save(order6);
+        ruth.addOrder(order1);
+        customerRepository.save(ruth);
 
-        Order order7 = new Order("Thursday Feb 4th", juan, venue2);
-        orderRepository.save(order7);
+        neale.addOrder(order2);
+        customerRepository.save(neale);
 
-        Order order8 = new Order("Thursday Feb 4th", colin, venue3);
-        orderRepository.save(order8);
+        chris.addOrder(order3);
+        customerRepository.save(chris);
 
-        Order order9 = new Order("Thursday Feb 4th", hannah, venue4);
-        orderRepository.save(order9);
+        mark.addOrder(order4);
+        customerRepository.save(mark);
 
-        Order order10 = new Order("Thursday Feb 4th", zsolt, venue5);
-        orderRepository.save(order10);
+        venue1.addOrder(order1);
+        venueRepository.save(venue1);
 
-        Order order11 = new Order("Thursday Feb 4th", ally, venue1);
-        orderRepository.save(order11);
+        venue2.addOrder(order2);
+        venueRepository.save(venue2);
 
-        Order order12 = new Order("Thursday Feb 4th", stuart, venue2);
-        orderRepository.save(order12);
+        venue3.addOrder(order3);
+        venueRepository.save(venue3);
 
-        Order order13 = new Order("Thursday Feb 4th", michael, venue3);
-        orderRepository.save(order13);
+        venue4.addOrder(order4);
+        venueRepository.save(venue4);
 
-        Order order14 = new Order("Thursday Feb 4th", andy, venue4);
-        orderRepository.save(order14);
+        order1.addDrink(pinotGrigio);
+        order1.addDrink(bulmers);
+        order1.addFood(chickenSupreme);
+        order1.addFood(burger);
+        orderRepository.save(order1);
 
-        Order order15 = new Order("Thursday Feb 4th", ruthI, venue5);
-        orderRepository.save(order15);
+        order2.addDrink(guinness);
+        order2.addDrink(merlot);
+        order2.addFood(chickenCurry);
+        order2.addFood(fishAndChips);
+        orderRepository.save(order2);
 
-        Order order16 = new Order("Thursday Feb 4th", emma, venue1);
-        orderRepository.save(order16);
+        order3.addDrink(punkIpa);
+        order3.addDrink(punkIpa);
+        order3.addDrink(pinotGrigio);
+        order3.addDrink(oldMoot);
+        orderRepository.save(order3);
 
-        Order order17 = new Order("Thursday Feb 4th", katie, venue2);
-        orderRepository.save(order17);
-
-        Order order18 = new Order("Thursday Feb 4th", gavin, venue3);
-        orderRepository.save(order18);
-
-        Order order19 = new Order("Thursday Feb 4th", max, venue4);
-        orderRepository.save(order19);
-
-        Order order20 = new Order("Thursday Feb 4th", ian, venue5);
-        orderRepository.save(order20);
-
-        Order order21 = new Order("Thursday Feb 4th", mateusz, venue1);
-        orderRepository.save(order21);
-
-        Order order22 = new Order("Thursday Feb 4th", rob, venue2);
-        orderRepository.save(order22);
-
-        Order order23 = new Order("Thursday Feb 4th", marc, venue3);
-        orderRepository.save(order23);
-
-        Order order24 = new Order("Thursday Feb 4th", kenny, venue4);
-        orderRepository.save(order24);
-
-        Order order25 = new Order("Thursday Feb 4th", emily, venue5);
-        orderRepository.save(order25);
+        order4.addDrink(tennents);
+        order4.addDrink(merlot);
+        order4.addFood(steakPie);
+        order4.addFood(lasagne);
+        orderRepository.save(order4);
     }
 }
