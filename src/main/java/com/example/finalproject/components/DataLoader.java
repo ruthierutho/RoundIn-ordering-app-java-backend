@@ -39,6 +39,8 @@ public class DataLoader implements ApplicationRunner {
         Drink strongbow = new Drink("Strongbow", 4.00);
         Drink bulmers = new Drink("Bulmers", 4.50);
         Drink kopparberg = new Drink("Kopparberg Mixed Fruit", 4.50);
+        Drink magners = new Drink("Magners", 4.50);
+        Drink oldMoot = new Drink ("Old Moot", 4.50);
 
         Food steakPie = new Food("Steak Pie", 8.99);
         Food fishAndChips = new Food("Fish & Chips", 7.89);
