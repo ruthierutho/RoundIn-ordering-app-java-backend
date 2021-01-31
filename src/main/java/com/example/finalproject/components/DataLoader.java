@@ -54,121 +54,121 @@ public class DataLoader implements ApplicationRunner {
         Customer mark = new Customer("Mark");
         customerRepository.save(mark);
 
-        Venue venue1 = new Venue("The Grosvenor", grosvenorMenu);
-        venueRepository.save(venue1);
+        Venue grosvenor = new Venue("The Grosvenor", grosvenorMenu);
+        venueRepository.save(grosvenor);
 
-        Venue venue2 = new Venue("The Kilted Pig", kiltedPigMenu);
-        venueRepository.save(venue2);
+        Venue kiltedPig = new Venue("The Kilted Pig", kiltedPigMenu);
+        venueRepository.save(kiltedPig);
 
-        Venue venue3 = new Venue("The Athletic Arms", athleticArmsMenu);
-        venueRepository.save(venue3);
+        Venue athleticArms = new Venue("The Athletic Arms", athleticArmsMenu);
+        venueRepository.save(athleticArms);
 
-        Venue venue4 = new Venue("MacNastys", macNastysMenu);
-        venueRepository.save(venue4);
+        Venue macNastys = new Venue("MacNastys", macNastysMenu);
+        venueRepository.save(macNastys);
 
-        Order order1 = new Order("Thursday Feb 4th", ruth, venue1);
+        Order order1 = new Order("Thursday Feb 4th", ruth, grosvenor);
         orderRepository.save(order1);
 
-        Order order2 = new Order("Thursday Feb 4th", neale, venue2);
+        Order order2 = new Order("Thursday Feb 4th", neale, kiltedPig);
         orderRepository.save(order2);
 
-        Order order3 = new Order("Thursday Feb 4th", chris, venue3);
+        Order order3 = new Order("Thursday Feb 4th", chris, athleticArms);
         orderRepository.save(order3);
 
-        Order order4 = new Order("Thursday Feb 4th", mark, venue4);
+        Order order4 = new Order("Thursday Feb 4th", mark, macNastys);
         orderRepository.save(order4);
-
-
-        ruth.addOrder(order1);
-        customerRepository.save(ruth);
-
-        neale.addOrder(order2);
-        customerRepository.save(neale);
-
-        chris.addOrder(order3);
-        customerRepository.save(chris);
-
-        mark.addOrder(order4);
-        customerRepository.save(mark);
-
-
-        venue1.addOrder(order1);
-        venueRepository.save(venue1);
-
-        venue2.addOrder(order2);
-        venueRepository.save(venue2);
-
-        venue3.addOrder(order3);
-        venueRepository.save(venue3);
-
-        venue4.addOrder(order4);
-        venueRepository.save(venue4);
-
-
-        order1.addDrink(pinotGrigio);
-        order1.addDrink(merlot);
-        order1.addFood(fishAndChips);
-        order1.addFood(burger);
-        orderRepository.save(order1);
-
-        order2.addDrink(guinness);
-        order2.addDrink(merlot);
-        order2.addFood(burger);
-        order2.addFood(fishAndChips);
-        orderRepository.save(order2);
-
-        order3.addDrink(tennents);
-        order3.addDrink(tennents);
-        order3.addDrink(pinotGrigio);
-        order3.addDrink(merlot);
-        order3.addFood(burger);
-        orderRepository.save(order3);
-
-        order4.addDrink(tennents);
-        order4.addDrink(merlot);
-        order4.addFood(steakPie);
-        order4.addFood(lasagne);
-        orderRepository.save(order4);
-
-        grosvenorMenu.addDrink(tennents);
-        grosvenorMenu.addDrink(pinotGrigio);
-        grosvenorMenu.addDrink(merlot);
-        grosvenorMenu.addDrink(guinness);
-        grosvenorMenu.addFood(steakPie);
-        grosvenorMenu.addFood(fishAndChips);
-        grosvenorMenu.addFood(burger);
-        grosvenorMenu.addFood(lasagne);
-        grosvenorMenu.addVenue(venue1);
-
-        kiltedPigMenu.addDrink(tennents);
-        kiltedPigMenu.addDrink(pinotGrigio);
-        kiltedPigMenu.addDrink(merlot);
-        kiltedPigMenu.addDrink(guinness);
-        kiltedPigMenu.addFood(steakPie);
-        kiltedPigMenu.addFood(fishAndChips);
-        kiltedPigMenu.addFood(burger);
-        kiltedPigMenu.addFood(lasagne);
-        kiltedPigMenu.addVenue(venue2);
-
-        athleticArmsMenu.addDrink(tennents);
-        athleticArmsMenu.addDrink(pinotGrigio);
-        athleticArmsMenu.addDrink(merlot);
-        athleticArmsMenu.addDrink(guinness);
-        athleticArmsMenu.addFood(steakPie);
-        athleticArmsMenu.addFood(fishAndChips);
-        athleticArmsMenu.addFood(burger);
-        athleticArmsMenu.addFood(lasagne);
-        athleticArmsMenu.addVenue(venue3);
-
-        macNastysMenu.addDrink(tennents);
-        macNastysMenu.addDrink(pinotGrigio);
-        macNastysMenu.addDrink(merlot);
-        macNastysMenu.addDrink(guinness);
-        macNastysMenu.addFood(steakPie);
-        macNastysMenu.addFood(fishAndChips);
-        macNastysMenu.addFood(burger);
-        macNastysMenu.addFood(lasagne);
-        macNastysMenu.addVenue(venue4);
+//
+//
+//        ruth.addOrder(order1);
+//        customerRepository.save(ruth);
+//
+//        neale.addOrder(order2);
+//        customerRepository.save(neale);
+//
+//        chris.addOrder(order3);
+//        customerRepository.save(chris);
+//
+//        mark.addOrder(order4);
+//        customerRepository.save(mark);
+//
+//
+//        venue1.addOrder(order1);
+//        venueRepository.save(venue1);
+//
+//        venue2.addOrder(order2);
+//        venueRepository.save(venue2);
+//
+//        venue3.addOrder(order3);
+//        venueRepository.save(venue3);
+//
+//        venue4.addOrder(order4);
+//        venueRepository.save(venue4);
+//
+//
+//        order1.addDrink(pinotGrigio);
+//        order1.addDrink(merlot);
+//        order1.addFood(fishAndChips);
+//        order1.addFood(burger);
+//        orderRepository.save(order1);
+//
+//        order2.addDrink(guinness);
+//        order2.addDrink(merlot);
+//        order2.addFood(burger);
+//        order2.addFood(fishAndChips);
+//        orderRepository.save(order2);
+//
+//        order3.addDrink(tennents);
+//        order3.addDrink(tennents);
+//        order3.addDrink(pinotGrigio);
+//        order3.addDrink(merlot);
+//        order3.addFood(burger);
+//        orderRepository.save(order3);
+//
+//        order4.addDrink(tennents);
+//        order4.addDrink(merlot);
+//        order4.addFood(steakPie);
+//        order4.addFood(lasagne);
+//        orderRepository.save(order4);
+//
+//        grosvenorMenu.addDrink(tennents);
+//        grosvenorMenu.addDrink(pinotGrigio);
+//        grosvenorMenu.addDrink(merlot);
+//        grosvenorMenu.addDrink(guinness);
+//        grosvenorMenu.addFood(steakPie);
+//        grosvenorMenu.addFood(fishAndChips);
+//        grosvenorMenu.addFood(burger);
+//        grosvenorMenu.addFood(lasagne);
+//        grosvenorMenu.addVenue(venue1);
+//
+//        kiltedPigMenu.addDrink(tennents);
+//        kiltedPigMenu.addDrink(pinotGrigio);
+//        kiltedPigMenu.addDrink(merlot);
+//        kiltedPigMenu.addDrink(guinness);
+//        kiltedPigMenu.addFood(steakPie);
+//        kiltedPigMenu.addFood(fishAndChips);
+//        kiltedPigMenu.addFood(burger);
+//        kiltedPigMenu.addFood(lasagne);
+//        kiltedPigMenu.addVenue(venue2);
+//
+//        athleticArmsMenu.addDrink(tennents);
+//        athleticArmsMenu.addDrink(pinotGrigio);
+//        athleticArmsMenu.addDrink(merlot);
+//        athleticArmsMenu.addDrink(guinness);
+//        athleticArmsMenu.addFood(steakPie);
+//        athleticArmsMenu.addFood(fishAndChips);
+//        athleticArmsMenu.addFood(burger);
+//        athleticArmsMenu.addFood(lasagne);
+//        athleticArmsMenu.addVenue(venue3);
+//
+//        macNastysMenu.addDrink(tennents);
+//        macNastysMenu.addDrink(pinotGrigio);
+//        macNastysMenu.addDrink(merlot);
+//        macNastysMenu.addDrink(guinness);
+//        macNastysMenu.addFood(steakPie);
+//        macNastysMenu.addFood(fishAndChips);
+//        macNastysMenu.addFood(burger);
+//        macNastysMenu.addFood(lasagne);
+//        macNastysMenu.addVenue(venue4);
     }
 }
 
