@@ -50,6 +50,7 @@ public class DataLoader implements ApplicationRunner {
         Food scampi = new Food("Scampi", 8.99);
         Food burger = new Food("Burger", 8.99);
         Food chickenBurger = new Food("Chicken Burger", 8.99);
+        Food chips = new Food("Chips", 3.50);
 
         Menu theGrosvenorFood = new Menu("The Grosvenor - Food Menu");
         Menu theGrosvenorDrink = new Menu("The Grosvenor - Drink Menu");
@@ -74,6 +75,83 @@ public class DataLoader implements ApplicationRunner {
         Customer mark = new Customer("Mark");
         customerRepository.save(mark);
 
+        Venue venue1 = new Venue("The Grosvenor", theGrosvenorDrink);
+        venueRepository.save(venue1);
+
+        Venue venue2 = new Venue("The Kilted Pig", theKiltedPigDrink);
+        venueRepository.save(venue2);
+
+        Venue venue3 = new Venue("The Athletic Arms", theAthleticArmsFood);
+        venueRepository.save(venue3);
+
+        Venue venue4 = new Venue("MacNastys", macNastysDrink);
+        venueRepository.save(venue4);
+
+        Order order1 = new Order("Thursday Feb 4th", ruth, venue1);
+        orderRepository.save(order1);
+
+        Order order2 = new Order("Thursday Feb 4th", neale, venue2);
+        orderRepository.save(order2);
+
+        Order order3 = new Order("Thursday Feb 4th", chris, venue3);
+        orderRepository.save(order3);
+
+        Order order4 = new Order("Thursday Feb 4th", mark, venue4);
+        orderRepository.save(order4);
+
+
+        ruth.addOrder(order1);
+        customerRepository.save(ruth);
+
+        neale.addOrder(order2);
+        customerRepository.save(neale);
+
+        chris.addOrder(order3);
+        customerRepository.save(chris);
+
+        mark.addOrder(order4);
+        customerRepository.save(mark);
+
+
+        venue1.addOrder(order1);
+        venueRepository.save(venue1);
+
+        venue2.addOrder(order2);
+        venueRepository.save(venue2);
+
+        venue3.addOrder(order3);
+        venueRepository.save(venue3);
+
+        venue4.addOrder(order4);
+        venueRepository.save(venue4);
+
+
+        order1.addDrink(pinotGrigio);
+        order1.addDrink(bulmers);
+        order1.addFood(chickenSupreme);
+        order1.addFood(burger);
+        orderRepository.save(order1);
+
+        order2.addDrink(guinness);
+        order2.addDrink(merlot);
+        order2.addFood(chickenCurry);
+        order2.addFood(fishAndChips);
+        orderRepository.save(order2);
+
+        order3.addDrink(punkIpa);
+        order3.addDrink(punkIpa);
+        order3.addDrink(pinotGrigio);
+        order3.addDrink(oldMoot);
+        order3.addFood(chips);
+        orderRepository.save(order3);
+
+        order4.addDrink(tennents);
+        order4.addDrink(merlot);
+        order4.addFood(steakPie);
+        order4.addFood(lasagne);
+        orderRepository.save(order4);
+    }
+}
 
 //        Customer john = new Customer("John");
 //        customerRepository.save(john);
@@ -138,79 +216,54 @@ public class DataLoader implements ApplicationRunner {
 //        Customer emily = new Customer("Emily");
 //        customerRepository.save(emily);
 
-        Venue venue1 = new Venue("The Grosvenor", theGrosvenorDrink);
-        venueRepository.save(venue1);
 
-        Venue venue2 = new Venue("The Kilted Pig", theKiltedPigDrink);
-        venueRepository.save(venue2);
 
-        Venue venue3 = new Venue("The Athletic Arms", theAthleticArmsFood);
-        venueRepository.save(venue3);
-
-        Venue venue4 = new Venue("MacNastys", macNastysDrink);
-        venueRepository.save(venue4);
-
-        Venue venue5 = new Venue("No.10", no10Food);
-        venueRepository.save(venue5);
-
-        Order order1 = new Order("Thursday Feb 4th", ruth, venue1);
-        orderRepository.save(order1);
-
-        Order order2 = new Order("Thursday Feb 4th", neale, venue2);
-        orderRepository.save(order2);
-
-        Order order3 = new Order("Thursday Feb 4th", chris, venue3);
-        orderRepository.save(order3);
-
-        Order order4 = new Order("Thursday Feb 4th", mark, venue4);
-        orderRepository.save(order4);
-
-//        Order order5 = new Order("Thursday Feb 4th", john, venue5);
+//        Order order5 = new Order("Thursday Feb 4th", john, venue1);
 //        orderRepository.save(order5);
 //
-//        Order order6 = new Order("Thursday Feb 4th", roosa, venue1);
+//        Order order6 = new Order("Thursday Feb 4th", roosa, venue2);
 //        orderRepository.save(order6);
 //
-//        Order order7 = new Order("Thursday Feb 4th", juan, venue2);
+//        Order order7 = new Order("Thursday Feb 4th", juan, venue3);
 //        orderRepository.save(order7);
 //
-//        Order order8 = new Order("Thursday Feb 4th", colin, venue3);
+//        Order order8 = new Order("Thursday Feb 4th", colin, venue4);
 //        orderRepository.save(order8);
 //
-//        Order order9 = new Order("Thursday Feb 4th", hannah, venue4);
+//        Order order9 = new Order("Thursday Feb 4th", hannah, venue1);
 //        orderRepository.save(order9);
 //
-//        Order order10 = new Order("Thursday Feb 4th", zsolt, venue5);
+//        Order order10 = new Order("Thursday Feb 4th", zsolt, venue2);
 //        orderRepository.save(order10);
 //
-//        Order order11 = new Order("Thursday Feb 4th", ally, venue1);
+//        Order order11 = new Order("Thursday Feb 4th", ally, venue3);
 //        orderRepository.save(order11);
 //
-//        Order order12 = new Order("Thursday Feb 4th", stuart, venue2);
+//        Order order12 = new Order("Thursday Feb 4th", stuart, venue4);
 //        orderRepository.save(order12);
 //
-//        Order order13 = new Order("Thursday Feb 4th", michael, venue3);
+//        Order order13 = new Order("Thursday Feb 4th", michael, venue1);
 //        orderRepository.save(order13);
 //
-//        Order order14 = new Order("Thursday Feb 4th", andy, venue4);
+//        Order order14 = new Order("Thursday Feb 4th", andy, venue2);
 //        orderRepository.save(order14);
 //
-//        Order order15 = new Order("Thursday Feb 4th", ruthI, venue5);
+//        Order order15 = new Order("Thursday Feb 4th", ruthI, venue3);
 //        orderRepository.save(order15);
 //
-//        Order order16 = new Order("Thursday Feb 4th", emma, venue1);
+//        Order order16 = new Order("Thursday Feb 4th", emma, venue4);
 //        orderRepository.save(order16);
 //
-//        Order order17 = new Order("Thursday Feb 4th", katie, venue2);
+//        Order order17 = new Order("Thursday Feb 4th", katie, venue1);
 //        orderRepository.save(order17);
 //
-//        Order order18 = new Order("Thursday Feb 4th", gavin, venue3);
+//        Order order18 = new Order("Thursday Feb 4th", gavin, venue2);
 //        orderRepository.save(order18);
 //
-//        Order order19 = new Order("Thursday Feb 4th", max, venue4);
+//        Order order19 = new Order("Thursday Feb 4th", max, venue3);
 //        orderRepository.save(order19);
 //
-//        Order order20 = new Order("Thursday Feb 4th", ian, venue5);
+//        Order order20 = new Order("Thursday Feb 4th", ian, venue4);
 //        orderRepository.save(order20);
 //
 //        Order order21 = new Order("Thursday Feb 4th", mateusz, venue1);
@@ -225,55 +278,5 @@ public class DataLoader implements ApplicationRunner {
 //        Order order24 = new Order("Thursday Feb 4th", kenny, venue4);
 //        orderRepository.save(order24);
 //
-//        Order order25 = new Order("Thursday Feb 4th", emily, venue5);
+//        Order order25 = new Order("Thursday Feb 4th", emily, venue1);
 //        orderRepository.save(order25);
-
-        ruth.addOrder(order1);
-        customerRepository.save(ruth);
-
-        neale.addOrder(order2);
-        customerRepository.save(neale);
-
-        chris.addOrder(order3);
-        customerRepository.save(chris);
-
-        mark.addOrder(order4);
-        customerRepository.save(mark);
-
-        venue1.addOrder(order1);
-        venueRepository.save(venue1);
-
-        venue2.addOrder(order2);
-        venueRepository.save(venue2);
-
-        venue3.addOrder(order3);
-        venueRepository.save(venue3);
-
-        venue4.addOrder(order4);
-        venueRepository.save(venue4);
-
-        order1.addDrink(pinotGrigio);
-        order1.addDrink(bulmers);
-        order1.addFood(chickenSupreme);
-        order1.addFood(burger);
-        orderRepository.save(order1);
-
-        order2.addDrink(guinness);
-        order2.addDrink(merlot);
-        order2.addFood(chickenCurry);
-        order2.addFood(fishAndChips);
-        orderRepository.save(order2);
-
-        order3.addDrink(punkIpa);
-        order3.addDrink(punkIpa);
-        order3.addDrink(pinotGrigio);
-        order3.addDrink(oldMoot);
-        orderRepository.save(order3);
-
-        order4.addDrink(tennents);
-        order4.addDrink(merlot);
-        order4.addFood(steakPie);
-        order4.addFood(lasagne);
-        orderRepository.save(order4);
-    }
-}
