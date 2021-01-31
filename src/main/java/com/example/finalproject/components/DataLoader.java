@@ -46,6 +46,8 @@ public class DataLoader implements ApplicationRunner {
         Food fishAndChips = new Food("Fish & Chips", 7.89);
         Food chickenCurry = new Food("Chicken Curry", 9.99);
         Food lasagne = new Food("Lasagne", 6.99);
+        Food chickenSupreme = new Food("Chicken Supreme", 8.99);
+        Food scampi = new Food("Scampi", 8.99);
 
         Menu theGrosvenor = new Menu("The Grosvenor - Food Menu");
         Menu theKiltedPig = new Menu("The Kilted Pig - Cocktail Menu");
