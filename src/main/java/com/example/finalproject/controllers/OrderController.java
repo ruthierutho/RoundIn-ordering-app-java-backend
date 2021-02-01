@@ -1,7 +1,6 @@
 package com.example.finalproject.controllers;
 
-import com.example.finalproject.models.Customer;
-import com.example.finalproject.models.Order;
+import com.example.finalproject.models.*;
 import com.example.finalproject.repositories.CustomerRepository;
 import com.example.finalproject.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +35,41 @@ public class OrderController {
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
         orderRepository.save(order);
         return new ResponseEntity<> (order, HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/orders/update/{id}")
+    public ResponseEntity updateOrder(
+            @PathVariable Long id,
+            @RequestBody(required = false) String newDate,
+            @RequestBody(required = false) Customer newCustomer,
+            @RequestBody(required = false) Venue newVenue,
+            @RequestBody(required = false) List<Drink> newDrinks,
+            @RequestBody(required = false) List<Food> newFoods) {
+        Order orderToUpdate = orderRepository.getOne(id);
+        if (newDate != null) {
+            orderToUpdate.setDate(newDate);
+        }
+        if (newCustomer != null) {
+            orderToUpdate.setCustomer(newCustomer);
+        }
+        if (newVenue != null) {
+            orderToUpdate.setVenue(newVenue);
+        }
+        if (newDrinks != null) {
+            orderToUpdate.setDrinks(newDrinks);
+        }
+        if (newFoods != null) {
+            orderToUpdate.setFoods(newFoods);
+        }
+        orderRepository.save(orderToUpdate);
+        return new ResponseEntity<>(orderRepository.getOne(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/orders/delete/{id}")
+    public ResponseEntity deleteOrder(@PathVariable Long id) {
+        Order deletedOrder = orderRepository.getOne(id);
+        orderRepository.deleteById(id);
+        return new ResponseEntity<>(deletedOrder, HttpStatus.OK);
     }
 }
 

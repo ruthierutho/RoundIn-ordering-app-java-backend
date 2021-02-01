@@ -64,7 +64,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
-    @JsonIgnoreProperties({"order"})
+    @JsonIgnoreProperties({"orders"})
     Customer customer;
 
     public Order(String date, Customer customer, Venue venue) {
@@ -77,6 +77,22 @@ public class Order {
 
     public Order(){
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 
     public List<Food> getFoods() {

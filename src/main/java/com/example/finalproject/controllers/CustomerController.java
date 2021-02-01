@@ -26,7 +26,7 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/customers/{id}")
-    public ResponseEntity getCustomers(@PathVariable Long id) {
+    public ResponseEntity getCustomer(@PathVariable Long id) {
         return new ResponseEntity<>(customerRepository.findById(id), HttpStatus.OK);
     }
 
@@ -34,5 +34,20 @@ public class CustomerController {
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
         customerRepository.save(customer);
         return new ResponseEntity<> (customer, HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/customers/update/{id}")
+    public ResponseEntity updateCustomer(@PathVariable Long id, @RequestBody String newName) {
+        Customer customerToUpdate = customerRepository.getOne(id);
+        customerToUpdate.setName(newName);
+        customerRepository.save(customerToUpdate);
+        return new ResponseEntity<>(customerRepository.getOne(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/customers/delete/{id}")
+    public ResponseEntity deleteCustomer(@PathVariable Long id) {
+        Customer deletedCustomer = customerRepository.getOne(id);
+        customerRepository.deleteById(id);
+        return new ResponseEntity<>(deletedCustomer, HttpStatus.OK);
     }
 }

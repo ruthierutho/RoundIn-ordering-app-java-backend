@@ -1,6 +1,8 @@
 package com.example.finalproject.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -35,6 +37,7 @@ public class Menu {
                     )
             }
     )
+    @JsonIgnoreProperties("menu")
     private List<Drink> drinks;
 
     @ManyToMany
@@ -55,6 +58,7 @@ public class Menu {
                     )
             }
     )
+    @JsonIgnoreProperties("menu")
     private List<Food> foods;
 
     @JsonIgnoreProperties({"menu"})

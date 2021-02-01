@@ -1,7 +1,6 @@
 package com.example.finalproject.controllers;
 
-import com.example.finalproject.models.Customer;
-import com.example.finalproject.models.Venue;
+import com.example.finalproject.models.*;
 import com.example.finalproject.repositories.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,5 +34,28 @@ public class VenueController {
     public ResponseEntity<Venue> createVenue(@RequestBody Venue venue){
         venueRepository.save(venue);
         return new ResponseEntity<>(venue, HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/venues/update/{id}")
+    public ResponseEntity updateVenue(
+            @PathVariable Long id,
+            @RequestBody(required = false) String newName,
+            @RequestBody(required = false) Menu newMenu) {
+        Venue venueToUpdate = venueRepository.getOne(id);
+        if (newName != null) {
+            venueToUpdate.setName(newName);
+        }
+        if (newMenu != null) {
+            venueToUpdate.setMenu(newMenu);
+        }
+        venueRepository.save(venueToUpdate);
+        return new ResponseEntity<>(venueRepository.getOne(id), HttpStatus.OK);
+    }
+
+    @DeleteMapping(value = "/venues/delete/{id}")
+    public ResponseEntity deleteVenue(@PathVariable Long id) {
+        Venue deletedVenue = venueRepository.getOne(id);
+        venueRepository.deleteById(id);
+        return new ResponseEntity<>(deletedVenue, HttpStatus.OK);
     }
 }

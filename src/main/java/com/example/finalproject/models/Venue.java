@@ -1,7 +1,9 @@
 package com.example.finalproject.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
@@ -21,7 +23,7 @@ public class Venue {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "menu_id", nullable = false)
-    @JsonIgnoreProperties({"venue"})
+    @JsonIgnoreProperties({"venues", "drinks", "foods"})
     private Menu menu;
 
     @JsonIgnoreProperties({"venue"})

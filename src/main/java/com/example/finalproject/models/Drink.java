@@ -1,6 +1,9 @@
 package com.example.finalproject.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +40,7 @@ public class Drink{
                     )
             }
     )
+    @JsonIgnore
     private List<Menu> menu;
 
     @ManyToMany
@@ -57,13 +61,18 @@ public class Drink{
                     )
             }
     )
+    @JsonIgnore
     private List<Order> order;
 
-    public Drink(String name, double price) {
+    @Enumerated(EnumType.STRING)
+    private DrinkCategory drinkCategory;
+
+    public Drink(String name, double price, DrinkCategory drinkCategory) {
         this.name = name;
         this.price = price;
         this.menu = new ArrayList<Menu>();
         this.order = new ArrayList<Order>();
+        this.drinkCategory = drinkCategory;
     }
 
     public Drink(){
@@ -116,5 +125,13 @@ public class Drink{
 
     public void setOrder(List<Order> order) {
         this.order = order;
+    }
+
+    public DrinkCategory getDrinkCategory() {
+        return drinkCategory;
+    }
+
+    public void setDrinkCategory(DrinkCategory drinkCategory) {
+        this.drinkCategory = drinkCategory;
     }
 }
