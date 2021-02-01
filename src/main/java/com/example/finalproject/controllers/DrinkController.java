@@ -1,6 +1,5 @@
 package com.example.finalproject.controllers;
 
-import com.example.finalproject.models.Customer;
 import com.example.finalproject.models.Drink;
 import com.example.finalproject.models.DrinkCategory;
 import com.example.finalproject.repositories.DrinkRepository;
