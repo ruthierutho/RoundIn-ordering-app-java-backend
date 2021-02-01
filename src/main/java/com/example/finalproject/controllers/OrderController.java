@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class OrderController {
 
     @Autowired
     OrderRepository orderRepository;
+
 
     @GetMapping(value= "/orders")
     public ResponseEntity<List<Order>>getAllOrdersAndFilters(
