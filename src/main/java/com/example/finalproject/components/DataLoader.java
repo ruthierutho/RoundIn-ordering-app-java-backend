@@ -209,6 +209,18 @@ public class DataLoader implements ApplicationRunner {
         order1.addFood(scampi);
         order1.addFood(steakPie);
         orderRepository.save(order1);
+
+        Order order2 = new Order("30-01-2021 13:15", roosa, venue1);
+        orderRepository.save(order2);
+        order2.addDrink(merlot);
+        order2.addFood(iceCream);
+        orderRepository.save(order2);
+
+        Order order3 = new Order("30-01-2021 14:15", ruthI, venue1);
+        orderRepository.save(order3);
+        order3.addDrink(pinotGrigio);
+        order3.addDrink(punkIpa);
+        orderRepository.save(order3);
     }
 }
 
