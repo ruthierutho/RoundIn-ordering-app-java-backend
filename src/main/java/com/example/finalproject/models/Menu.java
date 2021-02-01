@@ -116,15 +116,15 @@ public class Menu {
         this.venues = venues;
     }
 
-    public boolean addDrink(Drink drink) {
-        return drinks.add(drink);
+    public void addDrink(Drink drink) {
+        this.drinks.add(drink);
     }
 
-    public boolean addFood(Food food) {
-        return foods.add(food);
+    public void addFood(Food food) {
+        this.foods.add(food);
     }
 
-    public boolean addVenue(Venue venue) {
-        return venues.add(venue);
+    public void addVenue(Venue venue) {
+        this.venues.add(venue);
     }
 }

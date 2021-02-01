@@ -56,7 +56,7 @@ public class Customer {
         this.id = id;
     }
 
-    public boolean addOrder(Order order) {
-        return orders.add(order);
+    public void addOrder(Order order) {
+        this.orders.add(order);
     }
 }
