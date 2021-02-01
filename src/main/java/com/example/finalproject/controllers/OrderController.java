@@ -20,10 +20,14 @@ public class OrderController {
 
     @GetMapping(value= "/orders")
     public ResponseEntity<List<Order>>getAllOrdersAndFilters(
-            @RequestParam(required = false, name = "date") String date
+            @RequestParam(required = false, name = "date") String date,
+            @RequestParam(required = false, name = "collected") Boolean collected
     ) {
         if (date != null){
             return new ResponseEntity<>(orderRepository.findAllByDate(date), HttpStatus.OK);
+        }
+        if (collected != null){
+            return new ResponseEntity<>(orderRepository.findAllByCollected(collected), HttpStatus.OK);
         }
         return new ResponseEntity<>(orderRepository.findAll(), HttpStatus.OK);
     }
@@ -46,7 +50,9 @@ public class OrderController {
             @RequestBody(required = false) Customer newCustomer,
             @RequestBody(required = false) Venue newVenue,
             @RequestBody(required = false) List<Drink> newDrinks,
-            @RequestBody(required = false) List<Food> newFoods) {
+            @RequestBody(required = false) List<Food> newFoods,
+            @RequestBody(required = false) Boolean collected
+    ){
         Order orderToUpdate = orderRepository.getOne(id);
         if (newDate != null) {
             orderToUpdate.setDate(newDate);
@@ -62,6 +68,9 @@ public class OrderController {
         }
         if (newFoods != null) {
             orderToUpdate.setFoods(newFoods);
+        }
+        if (collected != null) {
+            orderToUpdate.setCollected(collected);
         }
         orderRepository.save(orderToUpdate);
         return new ResponseEntity<>(orderRepository.getOne(id), HttpStatus.OK);

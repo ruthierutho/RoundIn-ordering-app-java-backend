@@ -66,15 +66,18 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     @JsonIgnoreProperties({"orders"})
-    Customer customer;
+    private Customer customer;
 
-//    REMOVED FROM CONSTRUCTOR - List<Food> foods, List<Drink> drinks,
+    @Column(name="collected")
+    private boolean collected;
+
     public Order(String date, Customer customer, Venue venue) {
         this.date = date;
         this.customer = customer;
         this.venue = venue;
         this.drinks = new ArrayList<>();
         this.foods = new ArrayList<>();
+        this.collected = false;
     }
 
     public Order(){
@@ -137,4 +140,11 @@ public class Order {
         this.drinks.add(drink);
     }
 
+    public boolean isCollected() {
+        return collected;
+    }
+
+    public void setCollected(boolean collected) {
+        this.collected = collected;
+    }
 }
