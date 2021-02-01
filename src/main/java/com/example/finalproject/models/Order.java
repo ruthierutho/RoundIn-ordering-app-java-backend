@@ -1,7 +1,6 @@
 package com.example.finalproject.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -60,8 +59,11 @@ public class Order {
     )
     private List<Drink> drinks;
 
-    @Column(name = "date")
-    private String date;
+    @Column(name = "collectionDate")
+    private String collectionDate;
+
+    @Column(name = "collectionTime")
+    private String collectionTime;
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
@@ -71,8 +73,9 @@ public class Order {
     @Column(name="collected")
     private boolean collected;
 
-    public Order(String date, Customer customer, Venue venue) {
-        this.date = date;
+    public Order(String collectionDate, String collectionTime, Customer customer, Venue venue) {
+        this.collectionDate = collectionDate;
+        this.collectionTime = collectionTime;
         this.customer = customer;
         this.venue = venue;
         this.drinks = new ArrayList<>();
@@ -116,12 +119,12 @@ public class Order {
         this.drinks = drinks;
     }
 
-    public String getDate() {
-        return date;
+    public String getCollectionDate() {
+        return collectionDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setCollectionDate(String date) {
+        this.collectionDate = date;
     }
 
     public Customer getCustomer() {
@@ -146,5 +149,13 @@ public class Order {
 
     public void setCollected(boolean collected) {
         this.collected = collected;
+    }
+
+    public String getCollectionTime() {
+        return collectionTime;
+    }
+
+    public void setCollectionTime(String collectionTime) {
+        this.collectionTime = collectionTime;
     }
 }

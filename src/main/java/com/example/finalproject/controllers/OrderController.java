@@ -1,7 +1,6 @@
 package com.example.finalproject.controllers;
 
 import com.example.finalproject.models.*;
-import com.example.finalproject.repositories.CustomerRepository;
 import com.example.finalproject.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,10 +20,14 @@ public class OrderController {
     @GetMapping(value= "/orders")
     public ResponseEntity<List<Order>>getAllOrdersAndFilters(
             @RequestParam(required = false, name = "date") String date,
+            @RequestParam(required = false, name = "time") String time,
             @RequestParam(required = false, name = "collected") Boolean collected
     ) {
         if (date != null){
-            return new ResponseEntity<>(orderRepository.findAllByDate(date), HttpStatus.OK);
+            return new ResponseEntity<>(orderRepository.findAllByCollectionDate(date), HttpStatus.OK);
+        }
+        if (time != null){
+            return new ResponseEntity<>(orderRepository.findAllByCollectionTime(time), HttpStatus.OK);
         }
         if (collected != null){
             return new ResponseEntity<>(orderRepository.findAllByCollected(collected), HttpStatus.OK);
@@ -47,6 +50,7 @@ public class OrderController {
     public ResponseEntity updateOrder(
             @PathVariable Long id,
             @RequestBody(required = false) String newDate,
+            @RequestBody(required = false) String newTime,
             @RequestBody(required = false) Customer newCustomer,
             @RequestBody(required = false) Venue newVenue,
             @RequestBody(required = false) List<Drink> newDrinks,
@@ -55,7 +59,10 @@ public class OrderController {
     ){
         Order orderToUpdate = orderRepository.getOne(id);
         if (newDate != null) {
-            orderToUpdate.setDate(newDate);
+            orderToUpdate.setCollectionDate(newDate);
+        }
+        if (newTime != null) {
+            orderToUpdate.setCollectionTime(newTime);
         }
         if (newCustomer != null) {
             orderToUpdate.setCustomer(newCustomer);

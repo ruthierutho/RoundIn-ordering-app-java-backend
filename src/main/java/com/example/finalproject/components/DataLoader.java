@@ -7,7 +7,15 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -35,6 +43,41 @@ public class DataLoader implements ApplicationRunner {
     ArrayList<Food> foodsArray;
 
     ArrayList<Menu> menusArray;
+
+    private void orderGenerator(int no_of_orders) {
+        List<Customer> customers = customerRepository.findAll();
+        List<Drink> drinks = drinkRepository.findAll();
+        List<Food> foods = foodRepository.findAll();
+        List<Venue> venues = venueRepository.findAll();
+        for (int i = 0; i < no_of_orders; i++){
+            Random rand = new Random();
+            Customer randomCustomer = customers.get(rand.nextInt(customers.size()));
+            Drink randomDrink1 = drinks.get(rand.nextInt(drinks.size()));
+            Drink randomDrink2 = drinks.get(rand.nextInt(drinks.size()));
+            Food randomFood1 = foods.get(rand.nextInt(foods.size()));
+            Food randomFood2 = foods.get(rand.nextInt(foods.size()));
+            Venue randomVenue = venues.get(rand.nextInt(venues.size()));
+
+
+            LocalDate from = LocalDate.of(2021, 2, 1);
+            LocalDate to = LocalDate.of(2021, 2, 28);
+            long days = from.until(to, ChronoUnit.DAYS);
+            long randomDays = ThreadLocalRandom.current().nextLong(days + 1);
+            LocalDate randomDate = from.plusDays(randomDays);
+            String date = (randomDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+
+            final Random random = new Random();
+            final int millisInDay = 24*60*60*1000;
+            Time time = new Time((long)random.nextInt(millisInDay));
+
+            Order order = new Order(date, time.toString(), randomCustomer, randomVenue);
+            order.addFood(randomFood1);
+            order.addFood(randomFood2);
+            order.addDrink(randomDrink1);
+            order.addDrink(randomDrink2);
+            orderRepository.save(order);
+        }
+    };
 
     public DataLoader(){
         this.drinksArray = new ArrayList<>();
@@ -202,25 +245,7 @@ public class DataLoader implements ApplicationRunner {
         Venue venue5 = new Venue("No.10", no10Menu);
         venueRepository.save(venue5);
 
-        Order order1 = new Order("01-02-2021 09:15",emily, venue1);
-        orderRepository.save(order1);
-        order1.addDrink(guinness);
-        order1.addDrink(guinness);
-        order1.addFood(scampi);
-        order1.addFood(steakPie);
-        orderRepository.save(order1);
-
-        Order order2 = new Order("30-01-2021 13:15", roosa, venue1);
-        orderRepository.save(order2);
-        order2.addDrink(merlot);
-        order2.addFood(iceCream);
-        orderRepository.save(order2);
-
-        Order order3 = new Order("30-01-2021 14:15", ruthI, venue1);
-        orderRepository.save(order3);
-        order3.addDrink(pinotGrigio);
-        order3.addDrink(punkIpa);
-        orderRepository.save(order3);
+        orderGenerator(30);
     }
 }
 
