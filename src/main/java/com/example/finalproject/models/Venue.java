@@ -72,7 +72,7 @@ public class Venue {
         this.orders = orders;
     }
 
-    public boolean add(Order order) {
-        return orders.add(order);
+    public void addOrder(Order order) {
+        this.orders.add(order);
     }
 }
