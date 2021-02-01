@@ -1,6 +1,7 @@
 package com.example.finalproject.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "venue_id", nullable = false)
-    @JsonIgnoreProperties({"order"})
+    @JsonIgnoreProperties({"orders"})
     private Venue venue;
 
     @ManyToMany

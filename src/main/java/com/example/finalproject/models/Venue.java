@@ -26,7 +26,7 @@ public class Venue {
     @JsonIgnoreProperties({"venues", "drinks", "foods"})
     private Menu menu;
 
-    @JsonIgnoreProperties({"venue"})
+    @JsonIgnoreProperties({"customer", "orders", "venue", "drinks", "foods"})
     @OneToMany(mappedBy ="venue", fetch = FetchType.LAZY)
     private List<Order> orders;
 
