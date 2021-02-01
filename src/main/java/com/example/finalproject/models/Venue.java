@@ -1,7 +1,9 @@
 package com.example.finalproject.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
@@ -19,12 +21,12 @@ public class Venue {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "menu_id", nullable = false)
-    @JsonIgnoreProperties({"venue"})
+    @JsonIgnoreProperties({"venues", "drinks", "foods"})
     private Menu menu;
 
-    @JsonIgnoreProperties({"venue"})
+    @JsonIgnoreProperties({"customer", "orders", "venue", "drinks", "foods"})
     @OneToMany(mappedBy ="venue", fetch = FetchType.LAZY)
     private List<Order> orders;
 

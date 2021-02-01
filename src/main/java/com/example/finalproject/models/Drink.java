@@ -1,9 +1,11 @@
 package com.example.finalproject.models;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "drinks")
@@ -17,24 +19,59 @@ public class Drink{
     private String name;
 
     @Column(name = "price")
-    private double price;
+    private Double price;
 
-    @ManyToOne
-    @JoinColumn(name = "menu_id", nullable = false)
-    @JsonIgnoreProperties({"drinks"})
-    private Menu menu;
+    @ManyToMany
+    @JoinTable(
+            name = "menu_drinks",
+            joinColumns = {
+                    @JoinColumn (
+                            name = "drink_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn (
+                            name = "menu_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            }
+    )
+    @JsonIgnore
+    private List<Menu> menu;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
-    @JsonIgnoreProperties({"drinks"})
-    private Order order;
+    @ManyToMany
+    @JoinTable(
+            name = "order_drinks",
+            joinColumns = {
+                    @JoinColumn (
+                            name = "drink_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn (
+                            name = "order_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            }
+    )
+    @JsonIgnore
+    private List<Order> order;
 
-// TAKEN OUT CONSTRUCTOR -  Menu menu, Order order
-    public Drink(String name, double price) {
+    @Enumerated(EnumType.STRING)
+    private DrinkCategory drinkCategory;
+
+    public Drink(String name, Double price, DrinkCategory drinkCategory) {
         this.name = name;
         this.price = price;
-//        this.menu = menu;
-//        this.order = order;
+        this.menu = new ArrayList<Menu>();
+        this.order = new ArrayList<Order>();
+        this.drinkCategory = drinkCategory;
     }
 
     public Drink(){
@@ -49,11 +86,11 @@ public class Drink{
         this.name = name;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -65,19 +102,35 @@ public class Drink{
         this.id = id;
     }
 
-//    public Menu getMenu() {
-//        return menu;
-//    }
-//
-//    public void setMenu(Menu menu) {
-//        this.menu = menu;
-//    }
-//
-//    public Order getOrder() {
-//        return order;
-//    }
-//
-//    public void setOrder(Order order) {
-//        this.order = order;
-//    }
+    public boolean addMenu(Menu menu) {
+        return this.menu.add(menu);
+    }
+
+    public boolean addOrder(Order order) {
+        return this.order.add(order);
+    }
+
+    public List<Menu> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(List<Menu> menu) {
+        this.menu = menu;
+    }
+
+    public List<Order> getOrder() {
+        return order;
+    }
+
+    public void setOrder(List<Order> order) {
+        this.order = order;
+    }
+
+    public DrinkCategory getDrinkCategory() {
+        return drinkCategory;
+    }
+
+    public void setDrinkCategory(DrinkCategory drinkCategory) {
+        this.drinkCategory = drinkCategory;
+    }
 }
