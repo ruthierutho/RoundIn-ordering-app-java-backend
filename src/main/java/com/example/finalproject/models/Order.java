@@ -1,7 +1,7 @@
 package com.example.finalproject.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,15 +17,47 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "venue_id", nullable = false)
-    @JsonIgnoreProperties({"order"})
+    @JsonIgnoreProperties({"orders"})
     private Venue venue;
 
-    @JsonIgnoreProperties({"order"})
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    @ManyToMany
+    @JoinTable(
+            name = "order_foods",
+            joinColumns = {
+                    @JoinColumn (
+                            name = "order_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn (
+                            name = "food_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            }
+    )
     private List<Food> foods;
 
-    @JsonIgnoreProperties({"order"})
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    @ManyToMany
+    @JoinTable(
+            name = "order_drinks",
+            joinColumns = {
+                    @JoinColumn (
+                            name = "order_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn (
+                            name = "drink_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            }
+    )
     private List<Drink> drinks;
 
     @Column(name = "date")
@@ -33,11 +65,9 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
-    @JsonIgnoreProperties({"order"})
+    @JsonIgnoreProperties({"orders"})
     Customer customer;
 
-
-//TAKEN OUT OF CONSTRUCTOR - List<Food> foods, List<Drink> drinks
     public Order(String date, Customer customer, Venue venue) {
         this.drinks = new ArrayList<>();
         this.foods = new ArrayList<>();
@@ -48,6 +78,22 @@ public class Order {
 
     public Order(){
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 
     public List<Food> getFoods() {

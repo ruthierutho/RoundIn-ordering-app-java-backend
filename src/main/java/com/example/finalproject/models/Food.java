@@ -1,8 +1,11 @@
 package com.example.finalproject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "foods")
@@ -18,22 +21,57 @@ public class Food{
     @Column(name = "price")
     private double price;
 
-    @ManyToOne
-    @JoinColumn(name = "menu_id", nullable = false)
-    @JsonIgnoreProperties({"foods"})
-    private Menu menu;
+    @ManyToMany
+    @JoinTable(
+            name = "menu_foods",
+            joinColumns = {
+                    @JoinColumn (
+                            name = "food_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn (
+                            name = "menu_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            }
+    )
+    @JsonIgnore
+    private List<Menu> menus;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
-    @JsonIgnoreProperties({"foods"})
-    private Order order;
+    @ManyToMany
+    @JoinTable(
+            name = "order_foods",
+            joinColumns = {
+                    @JoinColumn (
+                            name = "food_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            },
+            inverseJoinColumns = {
+                    @JoinColumn (
+                            name = "order_id",
+                            nullable = false,
+                            updatable = false
+                    )
+            }
+    )
+    @JsonIgnore
+    private List<Order> orders;
 
-//    TAKEN OUT OF CONSTRUCTOR - Menu menu, Order order
-    public Food(String name, double price) {
+    @Enumerated(EnumType.STRING)
+    private FoodCategory foodCategory;
+
+    public Food(String name, double price, FoodCategory foodCategory) {
         this.name = name;
         this.price = price;
-//        this.menu = menu;
-//        this.order = order;
+        this.menus = new ArrayList<Menu>();
+        this.orders = new ArrayList<Order>();
+        this.foodCategory =  foodCategory;
     }
 
     public Food(){
@@ -64,19 +102,35 @@ public class Food{
         this.id = id;
     }
 
-//    public Menu getMenu() {
-//        return menu;
-//    }
-//
-//    public void setMenu(Menu menu) {
-//        this.menu = menu;
-//    }
-//
-//    public Order getOrder() {
-//        return order;
-//    }
-//
-//    public void setOrder(Order order) {
-//        this.order = order;
-//    }
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<Menu> menus) {
+        this.menus = menus;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
+    public boolean addMenu(Menu menu) {
+        return menus.add(menu);
+    }
+
+    public boolean addOrder(Order order) {
+        return orders.add(order);
+    }
+
+    public FoodCategory getFoodCategory() {
+        return foodCategory;
+    }
+
+    public void setFoodCategory(FoodCategory foodCategory) {
+        this.foodCategory = foodCategory;
+    }
 }

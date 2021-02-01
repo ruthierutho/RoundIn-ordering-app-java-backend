@@ -1,6 +1,7 @@
 package com.example.finalproject.models;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -18,7 +19,7 @@ public class Customer {
     @Column(name = "name")
     private String name;
 
-    @JsonIgnoreProperties({"customer"})
+    @JsonIgnoreProperties({"customer", "orders", "venue", "drinks", "foods"})
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Order> orders;
 
