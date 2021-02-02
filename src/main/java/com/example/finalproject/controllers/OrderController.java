@@ -46,41 +46,10 @@ public class OrderController {
         return new ResponseEntity<> (order, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/orders/update/{id}")
-    public ResponseEntity updateOrder(
-            @PathVariable Long id,
-            @RequestBody(required = false) String newDate,
-            @RequestBody(required = false) String newTime,
-            @RequestBody(required = false) Customer newCustomer,
-            @RequestBody(required = false) Venue newVenue,
-            @RequestBody(required = false) List<Drink> newDrinks,
-            @RequestBody(required = false) List<Food> newFoods,
-            @RequestBody(required = false) Boolean collected
-    ){
-        Order orderToUpdate = orderRepository.getOne(id);
-        if (newDate != null) {
-            orderToUpdate.setCollectionDate(newDate);
-        }
-        if (newTime != null) {
-            orderToUpdate.setCollectionTime(newTime);
-        }
-        if (newCustomer != null) {
-            orderToUpdate.setCustomer(newCustomer);
-        }
-        if (newVenue != null) {
-            orderToUpdate.setVenue(newVenue);
-        }
-        if (newDrinks != null) {
-            orderToUpdate.setDrinks(newDrinks);
-        }
-        if (newFoods != null) {
-            orderToUpdate.setFoods(newFoods);
-        }
-        if (collected != null) {
-            orderToUpdate.setCollected(collected);
-        }
-        orderRepository.save(orderToUpdate);
-        return new ResponseEntity<>(orderRepository.getOne(id), HttpStatus.OK);
+    @PatchMapping(value = "/orders/{id}")
+    public ResponseEntity<Order> updatePirate(@RequestBody Order order){
+        orderRepository.save(order);
+        return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/orders/delete/{id}")
