@@ -37,6 +37,7 @@ public class OrderController {
 
     @GetMapping(value = "/orders/{id}")
     public ResponseEntity getOrders(@PathVariable Long id) {
+        System.out.println("hi");
         return new ResponseEntity<>(orderRepository.findById(id), HttpStatus.OK);
     }
 
@@ -47,7 +48,8 @@ public class OrderController {
     }
 
     @PatchMapping(value = "/orders/{id}")
-    public ResponseEntity<Order> updatePirate(@RequestBody Order order){
+    public ResponseEntity<Order> updateOrder(@RequestBody Order order){
+        System.out.println(order.getCustomer().getName());
         orderRepository.save(order);
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
