@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component;
 
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -64,13 +64,15 @@ public class DataLoader implements ApplicationRunner {
             long days = from.until(to, ChronoUnit.DAYS);
             long randomDays = ThreadLocalRandom.current().nextLong(days + 1);
             LocalDate randomDate = from.plusDays(randomDays);
-            String date = (randomDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+            LocalTime time1 = LocalTime.of(8, 0, 0);
+            LocalTime time2 = LocalTime.of(17, 0, 0);
+            int secondOfDayTime1 = time1.toSecondOfDay();
+            int secondOfDayTime2 = time2.toSecondOfDay();
+            Random random = new Random();
+            int randomSecondOfDay = secondOfDayTime1 + random.nextInt(secondOfDayTime2-secondOfDayTime1);
+            LocalTime randomLocalTime = LocalTime.ofSecondOfDay(randomSecondOfDay);
 
-            final Random random = new Random();
-            final int millisInDay = 24*60*60*1000;
-            Time time = new Time((long)random.nextInt(millisInDay));
-
-            Order order = new Order(date, time.toString(), randomCustomer, randomVenue);
+            Order order = new Order(randomDate, randomLocalTime, randomCustomer, randomVenue);
             order.addFood(randomFood1);
             order.addFood(randomFood2);
             order.addDrink(randomDrink1);

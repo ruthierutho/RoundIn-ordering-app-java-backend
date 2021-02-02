@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @CrossOrigin
@@ -19,8 +21,8 @@ public class OrderController {
 
     @GetMapping(value= "/orders")
     public ResponseEntity<List<Order>>getAllOrdersAndFilters(
-            @RequestParam(required = false, name = "date") String date,
-            @RequestParam(required = false, name = "time") String time,
+            @RequestParam(required = false, name = "date") LocalDate date,
+            @RequestParam(required = false, name = "time") LocalTime time,
             @RequestParam(required = false, name = "collected") Boolean collected
     ) {
         if (date != null){
@@ -33,6 +35,11 @@ public class OrderController {
             return new ResponseEntity<>(orderRepository.findAllByCollected(collected), HttpStatus.OK);
         }
         return new ResponseEntity<>(orderRepository.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/orders/asc")
+    public ResponseEntity<List<Order>> getAllOrdersSorted() {
+        return new ResponseEntity<>(orderRepository.findAllByOrderByCollectionDateAscCollectionTimeAsc(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/orders/{id}")
@@ -49,8 +56,8 @@ public class OrderController {
     @PutMapping(value = "/orders/update/{id}")
     public ResponseEntity updateOrder(
             @PathVariable Long id,
-            @RequestBody(required = false) String newDate,
-            @RequestBody(required = false) String newTime,
+            @RequestBody(required = false) LocalDate newDate,
+            @RequestBody(required = false) LocalTime newTime,
             @RequestBody(required = false) Customer newCustomer,
             @RequestBody(required = false) Venue newVenue,
             @RequestBody(required = false) List<Drink> newDrinks,

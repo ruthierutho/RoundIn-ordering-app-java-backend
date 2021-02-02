@@ -3,6 +3,8 @@ package com.example.finalproject.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -60,10 +62,10 @@ public class Order {
     private List<Drink> drinks;
 
     @Column(name = "collectionDate")
-    private String collectionDate;
+    private LocalDate collectionDate;
 
     @Column(name = "collectionTime")
-    private String collectionTime;
+    private LocalTime collectionTime;
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
@@ -73,7 +75,7 @@ public class Order {
     @Column(name="collected")
     private boolean collected;
 
-    public Order(String collectionDate, String collectionTime, Customer customer, Venue venue) {
+    public Order(LocalDate collectionDate, LocalTime collectionTime, Customer customer, Venue venue) {
         this.collectionDate = collectionDate;
         this.collectionTime = collectionTime;
         this.customer = customer;
@@ -119,11 +121,11 @@ public class Order {
         this.drinks = drinks;
     }
 
-    public String getCollectionDate() {
+    public LocalDate getCollectionDate() {
         return collectionDate;
     }
 
-    public void setCollectionDate(String date) {
+    public void setCollectionDate(LocalDate date) {
         this.collectionDate = date;
     }
 
@@ -151,11 +153,11 @@ public class Order {
         this.collected = collected;
     }
 
-    public String getCollectionTime() {
+    public LocalTime getCollectionTime() {
         return collectionTime;
     }
 
-    public void setCollectionTime(String collectionTime) {
+    public void setCollectionTime(LocalTime collectionTime) {
         this.collectionTime = collectionTime;
     }
 }
