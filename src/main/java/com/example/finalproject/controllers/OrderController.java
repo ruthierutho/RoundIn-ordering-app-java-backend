@@ -49,7 +49,6 @@ public class OrderController {
 
     @PatchMapping(value = "/orders/{id}")
     public ResponseEntity<Order> updateOrder(@RequestBody Order order){
-        System.out.println(order.getCustomer().getName());
         orderRepository.save(order);
         return new ResponseEntity<>(order, HttpStatus.OK);
     }

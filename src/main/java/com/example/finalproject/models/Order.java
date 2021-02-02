@@ -65,7 +65,7 @@ public class Order {
     @Column(name = "collectionTime")
     private String collectionTime;
 
-    @ManyToOne(cascade = {CascadeType.MERGE})
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "customer_id", nullable = false)
     @JsonIgnoreProperties({"orders"})
     private Customer customer;

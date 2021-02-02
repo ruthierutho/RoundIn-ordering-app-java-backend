@@ -1,6 +1,7 @@
 package com.example.finalproject.controllers;
 
 import com.example.finalproject.models.Customer;
+import com.example.finalproject.models.Order;
 import com.example.finalproject.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -37,12 +38,10 @@ public class CustomerController {
         return new ResponseEntity<> (customer, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/customers/update/{id}")
-    public ResponseEntity updateCustomer(@PathVariable Long id, @RequestBody String newName) {
-        Customer customerToUpdate = customerRepository.getOne(id);
-        customerToUpdate.setName(newName);
-        customerRepository.save(customerToUpdate);
-        return new ResponseEntity<>(customerRepository.getOne(id), HttpStatus.OK);
+    @PatchMapping(value = "/customers/{id}")
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer) {
+        customerRepository.save(customer);
+        return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/customers/delete/{id}")

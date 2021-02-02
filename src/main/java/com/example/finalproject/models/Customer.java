@@ -20,7 +20,7 @@ public class Customer {
     private String name;
 
     @JsonIgnoreProperties({"customer", "orders", "venue", "drinks", "foods"})
-    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private List<Order> orders;
 
     public Customer(String name) {

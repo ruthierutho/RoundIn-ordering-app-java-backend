@@ -48,25 +48,10 @@ public class FoodController {
         return new ResponseEntity<> (food, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/foods/update/{id}")
-    public ResponseEntity updateFood(
-            @PathVariable Long id,
-            @RequestBody String newName,
-            @RequestBody Double newPrice,
-            @RequestBody FoodCategory newFoodCategory
-    ) {
-        Food foodToUpdate = foodRepository.getOne(id);
-        if (newName != null) {
-            foodToUpdate.setName(newName);
-        }
-        if (newPrice != null) {
-            foodToUpdate.setPrice(newPrice);
-        }
-        if (newFoodCategory != null) {
-            foodToUpdate.setFoodCategory(newFoodCategory);
-        }
-
-        return new ResponseEntity<>(foodRepository.getOne(id), HttpStatus.OK);
+    @PatchMapping(value = "/foods/{id}")
+    public ResponseEntity<Food> updateFood(@RequestBody Food food){
+        foodRepository.save(food);
+        return new ResponseEntity<>(food, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/foods/delete/{id}")

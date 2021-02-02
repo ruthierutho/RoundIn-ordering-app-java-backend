@@ -46,25 +46,10 @@ public class DrinkController {
         return new ResponseEntity<> (drink, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/drinks/update/{id}")
-    public ResponseEntity updateDrink(
-            @PathVariable Long id,
-            @RequestBody String newName,
-            @RequestBody Double newPrice,
-            @RequestBody DrinkCategory newDrinkCategory
-    ) {
-        Drink drinkToUpdate = drinkRepository.getOne(id);
-        if (newName != null) {
-            drinkToUpdate.setName(newName);
-        }
-        if (newPrice != null) {
-            drinkToUpdate.setPrice(newPrice);
-        }
-        if (newDrinkCategory != null) {
-            drinkToUpdate.setDrinkCategory(newDrinkCategory);
-        }
-
-        return new ResponseEntity<>(drinkRepository.getOne(id), HttpStatus.OK);
+    @PatchMapping(value = "/drinks/{id}")
+    public ResponseEntity<Drink> updateDrink(@RequestBody Drink drink){
+        drinkRepository.save(drink);
+        return new ResponseEntity<>(drink, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/drinks/delete/{id}")

@@ -36,16 +36,10 @@ public class MenuController {
         return new ResponseEntity<> (menu, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/menus/update/{id}")
-    public ResponseEntity updateMenu(
-            @PathVariable Long id,
-            @RequestBody String newName
-    ) {
-        Menu menuToUpdate = menuRepository.getOne(id);
-        if (newName != null) {
-            menuToUpdate.setName(newName);
-        }
-        return new ResponseEntity<>(menuRepository.getOne(id), HttpStatus.OK);
+    @PatchMapping(value = "/menus/{id}")
+    public ResponseEntity<Menu> updateMenu(@RequestBody Menu menu){
+        menuRepository.save(menu);
+        return new ResponseEntity<>(menu, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/menus/delete/{id}")

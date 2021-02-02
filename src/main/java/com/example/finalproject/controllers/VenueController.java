@@ -37,20 +37,10 @@ public class VenueController {
         return new ResponseEntity<>(venue, HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/venues/update/{id}")
-    public ResponseEntity updateVenue(
-            @PathVariable Long id,
-            @RequestBody(required = false) String newName,
-            @RequestBody(required = false) Menu newMenu) {
-        Venue venueToUpdate = venueRepository.getOne(id);
-        if (newName != null) {
-            venueToUpdate.setName(newName);
-        }
-        if (newMenu != null) {
-            venueToUpdate.setMenu(newMenu);
-        }
-        venueRepository.save(venueToUpdate);
-        return new ResponseEntity<>(venueRepository.getOne(id), HttpStatus.OK);
+    @PatchMapping(value = "/venues/{id}")
+    public ResponseEntity<Venue> updateVenue(@RequestBody Venue venue){
+        venueRepository.save(venue);
+        return new ResponseEntity<>(venue, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/venues/delete/{id}")
