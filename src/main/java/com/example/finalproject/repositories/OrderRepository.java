@@ -8,6 +8,6 @@ import java.util.List;
 public interface OrderRepository extends JpaRepository<Order, Long> {
     List<Order> findAllByCollectionDate(String date);
     List<Order> findAllByCollectionTime(String time);
-
     List<Order> findAllByCollected(Boolean collected);
+    List<Order> findAllByVenueIdOrderByCollectionDateAscCollectionTimeAsc(Long id);
 }

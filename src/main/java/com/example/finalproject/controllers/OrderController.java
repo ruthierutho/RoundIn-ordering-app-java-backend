@@ -41,6 +41,11 @@ public class OrderController {
         return new ResponseEntity<>(orderRepository.findById(id), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/orders/venue/{id}")
+    public ResponseEntity getOrderForVenue(@PathVariable Long id) {
+        return new ResponseEntity<>(orderRepository.findAllByVenueIdOrderByCollectionDateAscCollectionTimeAsc(id), HttpStatus.OK);
+    }
+
     @PostMapping(value = "/orders")
     public ResponseEntity<Order> createOrder(@RequestBody Order order) {
         orderRepository.save(order);

@@ -30,6 +30,11 @@ public class MenuController {
         return new ResponseEntity<>(menuRepository.findById(id), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/menus/venue/{id}")
+    public ResponseEntity getMenus(@PathVariable Long id) {
+        return new ResponseEntity<>(menuRepository.findAllByVenuesId(id), HttpStatus.OK);
+    }
+
     @PostMapping(value = "/menus")
     public ResponseEntity<Menu> createMenu(@RequestBody Menu menu) {
         menuRepository.save(menu);
