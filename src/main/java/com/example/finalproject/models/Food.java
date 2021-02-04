@@ -1,7 +1,6 @@
 package com.example.finalproject.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,7 +18,7 @@ public class Food{
     private String name;
 
     @Column(name = "price")
-    private double price;
+    private int price;
 
     @ManyToMany
     @JoinTable(
@@ -66,7 +65,7 @@ public class Food{
     @Enumerated(EnumType.STRING)
     private FoodCategory foodCategory;
 
-    public Food(String name, double price, FoodCategory foodCategory) {
+    public Food(String name, int price, FoodCategory foodCategory) {
         this.name = name;
         this.price = price;
         this.menus = new ArrayList<Menu>();
@@ -86,11 +85,11 @@ public class Food{
         this.name = name;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

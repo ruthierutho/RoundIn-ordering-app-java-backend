@@ -87,18 +87,18 @@ public class DataLoader implements ApplicationRunner {
 
     public void run(ApplicationArguments args){
 
-        Drink punkIpa = new Drink("Punk IPA", 4.49, DrinkCategory.BEER);
-        Drink tennents = new Drink ("Tennents Lager", 3.79, DrinkCategory.BEER);
-        Drink pinotGrigio = new Drink ("Pinot Grigio", 4.29, DrinkCategory.WINE);
-        Drink merlot = new Drink ("Merlot", 4.49, DrinkCategory.WINE);
-        Drink guinness = new Drink("Guinness", 4.50, DrinkCategory.BEER);
-        Drink sanMiguel = new Drink("San Miguel", 4.00, DrinkCategory.BEER);
-        Drink stellaArtois = new Drink("Stella Artois", 4.00, DrinkCategory.BEER);
-        Drink strongbow = new Drink("Strongbow", 4.00, DrinkCategory.CIDER);
-        Drink bulmers = new Drink("Bulmers", 4.50, DrinkCategory.CIDER);
-        Drink kopparberg = new Drink("Kopparberg Mixed Fruit", 4.50, DrinkCategory.CIDER);
-        Drink magners = new Drink("Magners", 4.50, DrinkCategory.CIDER);
-        Drink oldMout = new Drink ("Old Mout", 4.50, DrinkCategory.CIDER);
+        Drink punkIpa = new Drink("Punk IPA", 450, DrinkCategory.BEER);
+        Drink tennents = new Drink ("Tennents Lager", 380, DrinkCategory.BEER);
+        Drink pinotGrigio = new Drink ("Pinot Grigio", 430, DrinkCategory.WINE);
+        Drink merlot = new Drink ("Merlot", 450, DrinkCategory.WINE);
+        Drink guinness = new Drink("Guinness", 450, DrinkCategory.BEER);
+        Drink sanMiguel = new Drink("San Miguel", 400, DrinkCategory.BEER);
+        Drink stellaArtois = new Drink("Stella Artois", 400, DrinkCategory.BEER);
+        Drink strongbow = new Drink("Strongbow", 400, DrinkCategory.CIDER);
+        Drink bulmers = new Drink("Bulmers", 450, DrinkCategory.CIDER);
+        Drink kopparberg = new Drink("Kopparberg Mixed Fruit", 450, DrinkCategory.CIDER);
+        Drink magners = new Drink("Magners", 450, DrinkCategory.CIDER);
+        Drink oldMout = new Drink ("Old Mout", 450, DrinkCategory.CIDER);
         drinksArray.add(punkIpa);
         drinksArray.add(tennents);
         drinksArray.add(pinotGrigio);
@@ -116,16 +116,16 @@ public class DataLoader implements ApplicationRunner {
             drinkRepository.save(drink);
         }
 
-        Food steakPie = new Food("Steak Pie", 8.99, FoodCategory.MAIN);
-        Food fishAndChips = new Food("Fish & Chips", 7.89, FoodCategory.MAIN);
-        Food chickenCurry = new Food("Chicken Curry", 9.99, FoodCategory.MAIN);
-        Food lasagne = new Food("Lasagne", 6.99, FoodCategory.MAIN);
-        Food chickenSupreme = new Food("Chicken Supreme", 8.99, FoodCategory.MAIN);
-        Food scampi = new Food("Scampi", 8.99, FoodCategory.MAIN);
-        Food burger = new Food("Burger", 8.99, FoodCategory.MAIN);
-        Food chickenBurger = new Food("Chicken Burger", 8.99, FoodCategory.MAIN);
-        Food prawnCocktail =  new Food("Prawn Cocktail", 4.99, FoodCategory.STARTER);
-        Food iceCream = new Food("Ice Cream", 3.99, FoodCategory.DESSERT);
+        Food steakPie = new Food("Steak Pie", 899, FoodCategory.MAIN);
+        Food fishAndChips = new Food("Fish & Chips", 789, FoodCategory.MAIN);
+        Food chickenCurry = new Food("Chicken Curry", 999, FoodCategory.MAIN);
+        Food lasagne = new Food("Lasagne", 699, FoodCategory.MAIN);
+        Food chickenSupreme = new Food("Chicken Supreme", 899, FoodCategory.MAIN);
+        Food scampi = new Food("Scampi", 899, FoodCategory.MAIN);
+        Food burger = new Food("Burger", 899, FoodCategory.MAIN);
+        Food chickenBurger = new Food("Chicken Burger", 899, FoodCategory.MAIN);
+        Food prawnCocktail =  new Food("Prawn Cocktail", 499, FoodCategory.STARTER);
+        Food iceCream = new Food("Ice Cream", 399, FoodCategory.DESSERT);
         foodsArray.add(steakPie);
         foodsArray.add(fishAndChips);
         foodsArray.add(chickenCurry);

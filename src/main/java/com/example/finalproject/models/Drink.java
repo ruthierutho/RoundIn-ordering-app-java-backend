@@ -19,7 +19,7 @@ public class Drink{
     private String name;
 
     @Column(name = "price")
-    private Double price;
+    private int price;
 
     @ManyToMany
     @JoinTable(
@@ -66,7 +66,7 @@ public class Drink{
     @Enumerated(EnumType.STRING)
     private DrinkCategory drinkCategory;
 
-    public Drink(String name, Double price, DrinkCategory drinkCategory) {
+    public Drink(String name, int price, DrinkCategory drinkCategory) {
         this.name = name;
         this.price = price;
         this.menu = new ArrayList<Menu>();
@@ -86,11 +86,11 @@ public class Drink{
         this.name = name;
     }
 
-    public Double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
